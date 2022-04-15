@@ -1,5 +1,3 @@
-
-
 # git操作
 
 ## git命令
@@ -68,4 +66,70 @@ a = 3
 # 如果要保留 a = 3 只需要删除其他特殊符号，只保留a = 3即可，如下：
 a = 3
 # 之后保存文件，重新提交即可
+```
+
+## git添加远程仓库许可(以github为例)
+
+如果需要将本地仓库的修改推送到GitHub，就需要GitHub账号认证我们本地的机器，这样才允许本地机器push到远端。
+
+1. 首先需要在本地机器生成本地密钥和公钥
+
+```git
+# 进入当前用户文件夹，删除.ssh文件
+# 生成密钥
+ssh-keygen -t rsa -C boqiangZ@foxmail.com
+# 提示全部回车
+```
+
+2. 其中生成的id_rsa.pub文件里面的内容就是密钥。
+
+3. 将密钥中的内容添加到GitHub账户中Settings -> SSH and GPG keys -> New SSH key
+
+4. 操作完成后即可push到GitHub
+
+## git.ignore忽略文件
+
+ignore文件可以控制git哪些文件可以忽略上传到远端
+
+ignore文件的前缀随便起名，但是建议起名为git.ignore
+
+ignore文件的存放位置也可以位于任意处，但是为了便于让~/.gitconfig 文件引用，建议也放在用户家目录下
+
+**git.ignore模板**
+
+```gitignore
+# Log file
+*.log
+# BlueJ files
+*.ctxt
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+# virtual machine crash logs, see 
+http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+.classpath
+.project
+.settings
+target
+.idea
+*.im在.gitconfig 文件中引用忽略配置文件（此文件在 Windows 的家目录中）
+```
+
+**在.gitconfig 文件中引用忽略配置文件（此文件在 Windows 的家目录中）**
+
+```
+[user]
+name = Layne
+email = Layne@atguigu.com
+[core]
+excludesfile = C:/Users/asus/git.ignore
+# 注意：这里要使用“正斜线（/）”，不要使用“反斜线（\）
 ```
