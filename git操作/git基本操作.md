@@ -17,6 +17,8 @@ git status
 git add .
 # 提交到本地仓库 -m后可以附带日志注释信息，文件名不写默认提交所有暂存区
 git commit -m '注释信息' 文件名
+# 合并add和commit命令
+git commit -am '注释'
 # 查看历史记录
 git reflog
 # 版本穿梭 回到某个操作
