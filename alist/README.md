@@ -1,9 +1,1 @@
-<center>
-    <a herf="https://baidu.com">baidu</a>
-</center>
-
-<center><a rel="nofollow" href="//www.miui.com/" target="_blank">MIUI</a></center>
-
-
-
-[baidu](https://baidu.com)
+[离线下载](http://admin.260217.tk:6880)
