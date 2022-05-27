@@ -1,5 +1,14 @@
 # git操作
 
+[toc]
+
+## 配置用户信息
+
+```
+git config --global user.name brokyz
+git config --global user.email brokyz@foxmail.com
+```
+
 ## git命令
 
 ### git常用命令
@@ -36,6 +45,8 @@ git branch -v
 git checkout 分支名
 # 将指定分支合并到当前分支
 git merge 分支名
+# 删除分支 -D为强制删除
+git branch -d 分支名
 ```
 
 ### git远端仓库操作
@@ -45,8 +56,10 @@ git merge 分支名
 git remote -v
 # 添加远程仓库并设置别名
 git remote add 别名 远程地址
-# 推送本地分支上的内容到远程仓库
+# 推送本地分支上的内容到远程仓库 加-f参数强制推送，覆盖远端
 git push 别名 分支
+# 推送所有分支
+git push 别名 --all
 #将远程仓库的内容克隆到本地
 git clone 远程地址
 # 将远程仓库对于分支最新内容拉下来后与当前本地分支直接合并
@@ -79,14 +92,18 @@ a = 3
 ```git
 # 进入当前用户文件夹，删除.ssh文件
 # 生成密钥
-ssh-keygen -t rsa -C boqiangZ@foxmail.com
+ssh-keygen -t rsa -C brokyz@foxmail.com
 # 提示全部回车
 ```
 
 2. 其中生成的id_rsa.pub文件里面的内容就是密钥。
 
-3. 将密钥中的内容添加到GitHub账户中Settings -> SSH and GPG keys -> New SSH key
+```
+# 查看密钥
+cat ~/.ssh/id_rsa.pub
+```
 
+2. 将密钥中的内容添加到GitHub账户中Settings -> SSH and GPG keys -> New SSH key
 4. 操作完成后即可push到GitHub
 
 ## git.ignore忽略文件
