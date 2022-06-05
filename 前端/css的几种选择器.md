@@ -66,13 +66,13 @@
 
 ```html
 <style>
-    .box {
+    #box {
         width:400;
     }
 </style>
 <body>
     <div id="box">
-        类选择器
+        id选择器
     </div>
 </body>
 ```
@@ -201,3 +201,4 @@
 </body>
 ```
 
+# 
