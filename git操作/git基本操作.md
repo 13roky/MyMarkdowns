@@ -15,9 +15,9 @@ git config --global user.email brokyz@foxmail.com
 
 ```git
 # 设置用户签名
-git config --global user.name boqiangZ
+git config --global user.name brokyz
 # 设置用户邮箱
-git config --global user.email boqiangZ@foxmail.com
+git config --global user.email brokyz@foxmail.com
 # 初始化本地仓库 默认分支为master
 git init
 # 查看本地仓库状态

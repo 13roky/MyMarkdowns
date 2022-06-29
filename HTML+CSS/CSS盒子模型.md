@@ -125,7 +125,7 @@ maigin 的复合写法和 padding 完全一致。
 2. 可以为父元素定义上内边距。
 3. 可以为父元素添加 overflow: hidden。
 
-还有其他方法，比如浮动、固定，绝对定位的盒子不会有塌陷问题，后期再总结。
+还有其他方法，比如<span style="color:red;">浮动、固定，绝对定位的盒子不会有塌陷问题</span>，后期再总结。
 
 ### 清除内外边距
 
@@ -188,3 +188,20 @@ box-shadow: h-shadow v-shadow blur spread color inset
 
 <p style="color:red;">2. 盒子阴影不占用空间，不会影响其他盒子排列</p>
 
+
+
+## 文字阴影
+
+在CSS3中，可以使用text-shadow属性将阴影应用于文本。
+
+语法：
+
+```
+text-shadow: h-shadow b-shadow blur color;
+```
+| 值       | 描述                                     |
+| -------- | ---------------------------------------- |
+| h-shadow | 必须。水平阴影的位置。允许负值。         |
+| v-shadow | 必须。垂直阴影的位置。允许负值。         |
+| blur     | 可选。模糊距离。                         |
+| color    | 可选。阴影的颜色。请参阅CSS颜色值。      |
