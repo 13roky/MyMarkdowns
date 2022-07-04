@@ -776,3 +776,456 @@ for(var k in obj){
 }
 ```
 
+
+
+## 内置对象
+
+在 JS 中除了我们自己定义创建的对象以外，还存在一些 JS 自带的对象，这为我们提供了一些常用的功能，我们直接拿来使用即可。
+
+
+
+### Math 对象
+
+Math 对象不是一个构造函数，不需要我们使用 new 去创建，我们直接只用里面的属性和方法即可。
+
+这里介绍几个常用的属性和方法，具体属性和方法可以查看 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Math)
+
+#### 圆周率 Math.PI
+
+这个是就是我们的圆周率 Π
+
+```javascript
+console.log(Math.PI)
+```
+
+#### 最大值和最小值
+
+求最大值和最小值。
+
+如果给定的参数中至少有一个参数无法被转换成数字，则会返回 NaN。
+
+如果没有参数，则结果为 -Infinity。
+
+```javascript
+console.log(Math.max(1, 3, 2));
+console.log(Math.min(1, 3, 2));
+```
+
+#### 向下取整和向上取整
+
+```javascript
+Math.floor() // 向下取整
+Math.ceil() // 向上取整
+```
+
+#### 四舍五入取整
+
+```javascript
+Math.round() // 四舍五入，注意 当为-3.5时是，-3
+```
+
+#### 绝对值
+
+```javascript
+Math.abs()	// 绝对值 
+// 存在隐士转换，会把字符型能转换成数字的转换为数字型
+```
+
+#### 随机数（重点）
+
+`Math.random()`函数返回一个浮点，伪随机数在范围 [0,1)，我们可以对其进行缩放，得到我们想要的范围。
+
+```javascript
+// 取到 [min,max) 范围
+Math.random() * (max - min) + min;
+// 取到 [min,max) 的整数
+Math.floor(Math.random() * (max - min)) + min;
+// 取到 [min,max] 的整数
+Math.floor(Math.random() * (max - min + 1)) + min;
+```
+
+
+
+### Date 日期对象 
+
+Date 是一个构造函数，我们只能通过 Date 构造函数来实例化对象。
+
+具体使用产看 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay)
+
+```javascript
+// 如果没有参数，返回系统的当前时间
+var date = new Date();
+
+// 如果有参数，则返回参数的格式化时间，支持一下参数写法
+var birthday = new Date('December 17, 1995 03:24:00');
+var birthday = new Date('1995-12-17T03:24:00');
+var birthday = new Date(1995, 11, 17); // 从0开始数，这里是1995年 12月 17日
+var birthday = new Date(1995, 11, 17, 3, 24, 0);
+
+console.log(Date.now())	// 输出自Unix诞生到现在的毫秒数
+console.log(Date.parse('04 Dec 1995 00:12:00 GMT')) // 输出自Unix诞生到指定时间的毫秒数
+console.log(date.getFullYear()) // 获得 date 的年
+console.log(date.getMonth()+1)	// 获得 date 的月。由于月从0算起，所以加一
+console.log(date.getDate())	// 获得 date 的日。
+console.log(date.getHours()) // 获得 date 的时。
+console.log(date.getMinutes())	// 获得 date 的分。
+console.log(date.getSeconds())	// 获得 date 的秒。
+console.log(date.getDay()) // 获得 date 时当前周的第几天，从0其，0是第一天。
+// 同理如果get换为set就是设置
+date.setMonth(0) // 设置date月份为1月
+```
+
+
+
+### Array 数组对象
+
+JavaScript 的 **`Array`** 对象是用于构造数组的全局对象，数组是类似于列表的高阶对象。
+
+详情使用方法请查看 [MDN文档](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array)。
+
+#### 数组的两种创建方式
+
+```javascript
+// 通过字面量创建数组
+var arr = [1,2,3];
+// 通过构造函数创建
+var arr = new Array(3);	// 创建了一个长度为3的空数组
+var arr = new Array(1,2,3) // 创建了一个数组为[1,2,3],等价于第一种方法；这种写法必须是两个元素以上才行。
+```
+
+### 检测数组的两种方式
+
+```javascript
+// instanceof 运算符用来检测是否为数组 
+console.log([1,2] instanceof Array);	// 同理可以用于检测其他类型
+// Array.isArray() 方法
+console.log(Array.isArray(arr))
+```
+
+#### 添加元素
+
+```javascript
+var arr = [1,2,3];
+// 使用push()进行尾插入
+arr.push(4，5);	// 将4，5尾插入数组arr，返回新数组的长度，原数组会发生变化
+// 使用unshift()进行首插入
+arr.unshift(-1.0)	// 将-1,0首插入数组arr，返回新数组的长度，原数组会发生变化
+```
+
+#### 删除数组元素
+
+```javascript
+var arr = [1,2,3,4,5,6];
+// 使用pop()进行尾删除，每次只能删除一个元素，返回的是删除的元素，原数组发生变化
+arr.pop();
+// 使用shift()进行首删除，每次只能删除一个元素，返回的是删除的元素，原数组发生变化
+arr.shift();
+```
+
+#### 数组排序
+
+```javascript
+const array1 = ['one', 'two', 'three'];
+// reverse()翻转数组，不改变原数组
+const reversed = array1.reverse();	//out:"reversed:" Array ["three", "two", "one"]
+// sort()对数组进行排序 冒泡方法，不改变原数组
+var arr = [1, 30, 'March', 'Jan', 'Feb', 'Dec',4, 21, 100000];
+console.log(arr.sort()); // [1, 100000, 21, 30, 4, "Dec", "Feb", "Jan", "March"] 这种不带参数只根据第一个字符进行排序
+// 升序排列
+console.log(arr.sort(function(a,b){
+    return a-b;
+}));
+// 降序排列
+console.log(arr.sort(function(a,b){
+    return b-a;
+}));
+```
+
+#### 数组索引的获取
+
+```javascript
+var arr = [1,2,3,4,5,1,2];
+// indexOf()从前往后查找
+console.log(arr.indexOf(2));	// 返回数组中指定元素的第一个索引
+// lastIndexOf()从后往前查找
+console.log(arr.lastIndexOf(2));
+```
+
+### 数组去重（重点）
+
+自写函数
+
+```javascript
+function unique(arr){
+    var newArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (newArr.indexOf(arr[i]) === -1) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
+}
+```
+
+利用`Set`对象
+
+```javascript
+var arr = [1,2,3,1,2,3,1,2,3];
+var set = new Set(arr);
+console.log(set);
+```
+
+#### 数组转字符串
+
+```javascript
+var arr = [1,2,3];
+// toString()转换字符串，以逗号分隔
+console.log(arr.toString());
+// join()转换为字符串，默认为逗号，可以指定分隔符
+console.log(arr.join('&'));
+```
+
+#### 指定返回对象
+
+```javascript
+const animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+// 使用slice()得到数组，不会改变原数组
+console.log(animals.slice(2));
+// expected output: Array ["camel", "duck", "elephant"]
+console.log(animals.slice(2, 4));
+// expected output: Array ["camel", "duck"]
+console.log(animals.slice(-2));
+// expected output: Array ["duck", "elephant"]
+console.log(animals.slice(2, -1));
+// expected output: Array ["camel", "duck"]
+// 注意是左闭右开
+```
+
+#### 在指定位置删除和添加元素
+
+```javascript
+const months = ['Jan', 'March', 'April', 'June'];
+// splice(start,del,element) star:从第几个元素开始 del：向后删除几个元素，element:在这个位置前面添加element。 改变原数组
+months.splice(1, 0, 'Feb'); // 从index为1的元素March开始，删除0个元素，在其前面插入Feb
+console.log(months);
+// expected output: Array ["Jan", "Feb", "March", "April", "June"]
+months.splice(4, 1, 'May'); // 从index为4的元素开始，删除1个元素，在前面插入May
+// replaces 1 element at index 4
+console.log(months);
+// expected output: Array ["Jan", "Feb", "March", "April", "May"]
+months.splice(4, 1); // 从index为4的元素开始，删除1个元素.
+// expected output: Array ["Jan", "Feb", "March", "April"]
+```
+
+#### 合并数组
+
+```javascript
+const array1 = ['a', 'b', 'c'];
+const array2 = ['d', 'e', 'f'];
+const array3 = array1.concat(array2,array2); // 不改变原数组
+console.log(array3);
+// > Array ["a", "b", "c", "d", "e", "f", "d", "e", "f"]
+```
+
+
+
+### String 字符串对象
+
+**`String`** 全局对象是一个用于字符串或一个字符序列的构造函数。
+
+#### 基本包装类型
+
+只有对象才会有属性和方法 这是复杂数据类型才会有的。
+
+而字符串是简单数据类型，但是可以**通过基本包装类型。将其转换为复杂数据类型**。
+
+**基本包装类型就是，把简单数据类型包装称为复杂数据类型，这样基本数据类型就有了属性和方法**。
+
+```javascript
+var str = 'andy';
+console.log(str.length);
+
+// 上面两个代码的内部执行逻辑为
+// 1. 把简单数据类型转换为复杂数据类型
+var temp = new String('andy');
+// 2. 把临时变量的值给 str, 这样str就成为了一个对象
+str = temp;
+// 3. 销毁临时变量
+temp = null;
+```
+
+#### 字符串的不可变性
+
+```javascript
+// 在内存中开辟了一个内存空间用来存储andy，让声明的str指向andy的内存地址
+var str = 'andy';
+// 在内存中又新开辟了一个内存空间来存储red，这是改变str指向red的内存地址，但是andy依然存在于内存中，其内存地址依然存在，并不会进行销毁
+str = 'red';
+// 上面过程就是字符串的不可变性，所以我们尽量避免大量的字符串拼接操作
+```
+
+#### 根据字符返回位置
+
+字符串的所有方法，都不会改变字符串本身（字符串是不可变的），操作完成会返回一个新的字符串。
+
+```javascript
+var str = 'brokyzbrokyz';
+console.log(str.indexOf('k'));	// 3,只输出第一个
+console.log(str.indexOf('k',4))	// 9, 指定从3后开始查找
+```
+
+查找所有位置
+
+```javascript
+var str = 'brokyzbrokyzbrokyz';
+var index = str.indexOf('b');
+var num = 0;
+while(index !== -1) {
+    num++;
+    console.log(index);
+    index = str.indexOf('o',index+1)
+}
+console.log(num);
+```
+
+#### 根据位置返回字符
+
+```javascript
+var str = 'andy';
+// charAt() 根据位置返回索引号
+console.log(str.charAt(3));
+// 遍历字符
+for(var i = 0; i < str.length; i++) {
+    console.log(str.charAt(i));
+}
+// charCodeAt(index) 返回相应索引号的字符的ASCLL值 常用于判断用户按下了哪个按键
+console.log(str.charCodeAt(3))
+
+// H5新增
+console.log(str[3])
+```
+
+#### 拼接和截取字符串
+
+| 方法名                    | 说明                                                         |
+| ------------------------- | ------------------------------------------------------------ |
+| concat(str1,str2,str3...) | concat() 方法用于连接两个或多个字符串。拼接字符串，等效于+，+更常用 |
+| substr(start,length)      | 从start开始，向后去length个个数                              |
+| slice(start,end)          | 从start开始，截取到end位置，end取不到                        |
+| substring(start,end)      | 从start开始，截取到end位置，end取不到，基本和slice相同，但是不支持负号 |
+
+#### 替换字符串
+
+```javascript
+// 使用replace('被替换的字符','替换的字符') 只会替换第一个字符
+var str = 'brokyzbrokyz';
+console.log(str.replace('z','s'));
+// 替换所有
+while (str.indexOf('z') !=== -1) {
+    str = str.replace('z','s');
+}
+```
+
+#### 字符串转换为数组
+
+```javascript
+var str = '1,2,3,4,5';
+// 使用split('分隔符') 转换为数组
+console.log(str.split(','));
+```
+
+#### 大小写转换
+
+```javascript
+// toLowerCase() 将字符串转换为小写
+console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());	// 中文简体 zh-cn || zh-hans
+// toupperCase() 将字符串转换为大写
+console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
+// expected output: "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG."
+```
+
+
+
+## JS 简单数据类型和复杂数据类型
+
+简单数据类型又叫做基本数据类型或者**值类型**，复杂数据类型又叫做**引用类型**。
+
+- 值类型：简单数据类型，在存储时变量中存储的时值本身，因此叫做值类型。
+  - string，number，boolean，undefined，null
+  - 简单数据类型null，返回的时一个空对象 object。如果有个变量我们以后打算存储为对象，但是现在不需要，这个时候就可以赋值为null。
+- 引用类型：复杂数据类型，在存储时变量中存储的仅仅是地址（引用），因此叫做引用类型。
+  - 通过 new 关键字创建的对象（内置对象、自定义对象等），如 Object、Array、Date等。
+
+
+
+### 堆和栈
+
+1. 栈（操作系统）：由操作系统自动分配释放存放函数的参数值、局部变量的值等。其操作方式类似于数据结构中的栈。
+
+**简单数据类型存在在栈里**
+
+2. 堆（操作系统）：存储复杂类型（对象），一般由程序员分配释放，若程序员不释放，由垃圾回收机制回收。
+
+**复杂数据类型存放到堆里面**
+
+**注意：JS 中没有堆栈的概念，通过堆栈的方式们可以让大家更容易理解代码的一些执行方式，便于将来学习其他语言。**
+
+
+
+### 简单数据类型的内存分配
+
+值类型变量的数据直接存放在变量（栈空间）中
+
+比如`var age = 18;`
+
+会在栈中开辟一个内存空间，里面存放了18这个值，然后让 age指向18的内存地址。
+
+
+
+### 复杂数据类型的内存分配
+
+复杂数据类型的存储和栈堆都有关系。
+
+比如 `var arr = [1,2,3];`
+
+会在堆里面开辟一个空间，存放了[1,2,3]，然后在栈里面会存放堆的内存地址，之后 arr 会指向栈里面的内存地址，然后由栈中的内存地址指向堆里面存放的数据。
+
+
+
+### 简单数据类型传参
+
+简单类型传参同一变量不会开辟新的内存地址。
+
+比如`var a = 1; a = 2;`
+
+会在栈中开辟一个内存空间用来存放1这个值，然后由a指向栈中1对应的内存地址。当让a变为2时，并不会开辟新的内存空间来存放2，而是a指向栈中的内存地址不发生改变，其内存地址存放的值由1改为2。
+
+但是如果是string，就得考虑字符串的不可变性了。
+
+
+
+### 复杂数据类型传参
+
+有如下代码：
+
+```javascript
+function Person(name) {
+	this.name = name;
+}
+
+funtion f1(x) {
+	console.log(x.name);
+    x.name = "Z";
+    console.log(x.name);
+}
+
+var p = new Person("brokyz");
+console.log(p.name);
+f1(p);
+console.log(p.name);
+```
+
+![](https://pic.imgdb.cn/item/62c011705be16ec74a594175.jpg)
+
+1. 首先通过`new`关键字给变量`p`创建了一个`Person`对象，初始化`name = 'brokyz'`。这时在堆中开辟了一个内存空间，将创建的`Person`对象存在堆中，在栈中开辟了一个内存空间，这个内存空间中存放了堆中`Person`的内存地址的16进制的值，然后由变量`p`指向栈中存放`Person`的内存地址值。这样一来变量`p`先是指向了栈中存放的堆内存地址值，然后这个值指向了堆中的`Person`对象。
+2. 当我们调用函数`f1(p)`时，这时将实参`p`传递给形参`x`。这时在栈中重新开辟了一个内存地址，存放了和实参`p`一样的值，然后形参`x`指向这个栈中新开辟的值。也就是说，此时`p`和`x`指向的是栈中不同的内存地址，但是内存地址的存放的值都是指向同一个`Person`的堆内存地址。在函数中通过`x.name = 'z'`修改了`Person`的属性值，是`p`和`x`同时指向的`Person`，所以这时候输出`p.name`时，其属性也发生了改变。
