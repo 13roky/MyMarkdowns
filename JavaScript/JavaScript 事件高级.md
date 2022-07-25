@@ -1,4 +1,4 @@
-[toc]
+[TOC]
 
 ## 注册事件
 
@@ -6,13 +6,14 @@
 
 注册事件有两种方式：**传统方式**和**方法监听注册方式**。
 
-
-
 ### 传统注册方式
 
 - 使用 on 开头的事件 onclick
+
 - `<button onclick="alert('hi')"></button>`
+
 - btn.onclock = function(){}
+
 - 特点：注册事件的**唯一性**
 
 - 同一个元素同一个事件只能设置一个处理函数，最后注册的处理函数将会覆盖前面注册的处理函数。
@@ -79,7 +80,7 @@ btn.attachEvent('onclick', function(){
 
 ```javascript
 function addEventListener(element, eventName, fn){
-	// 判断当前浏览器是否支持 addEventListener
+    // 判断当前浏览器是否支持 addEventListener
     if(element.addEvenListener){
         element.addEventListener(eventName, fn);
     }else if(element.attachEvent){
@@ -91,11 +92,7 @@ function addEventListener(element, eventName, fn){
 }
 ```
 
-
-
 ## 删除事件（解绑事件）
-
-
 
 ### 传统方式删除事件
 
@@ -104,8 +101,6 @@ function addEventListener(element, eventName, fn){
 ```javascript
 eventTarget.onclick = null;
 ```
-
-
 
 ### 监听方式删除事件
 
@@ -118,6 +113,7 @@ eventTarget.removeEventListener(type, listener, useCapture)
 - type：事件类型字符串，比如 click、mouseover，注意这里并没有on
 
 - listener：需要解绑的事件处理函数
+
 - useCapture：事件流，默认为false。flase为冒泡阶段，true为捕获阶段。
 
 代码实例：
@@ -125,7 +121,7 @@ eventTarget.removeEventListener(type, listener, useCapture)
 ```javascript
 btn.addEventListener('click', fn);
 function fn() {
-	alert(22);
+    alert(22);
     btn.removeEventListener('click', fn);
 }
 ```
@@ -148,18 +144,16 @@ eventTarget.detachEvent(type, callback)
 ```javascript
 btn.attachEvent('onclick', fn);
 function fn() {
-	alert(33);
+    alert(33);
     btn.detachEvent('onclick', fn);
 }
 ```
-
-
 
 #### 对不同浏览器的兼容性处理
 
 ```javascript
 function removeEventListener(element, eventName, fn){
-	// 判断当前浏览器是否支持 removeEventListener
+    // 判断当前浏览器是否支持 removeEventListener
     if(element.removeEvenListener){
         element.removeEventListener(eventName, fn);
     }else if(element.detachEvent){
@@ -170,8 +164,6 @@ function removeEventListener(element, eventName, fn){
     }
 }
 ```
-
-
 
 ## DOM 事件流
 
@@ -260,8 +252,6 @@ DOM 事件流分为3个阶段：
 </html>
 ```
 
-
-
 ## 事件对象
 
 事件对象只有有了事件才会存在，他是系统给我们自动创建的，不需要我们传递参数。
@@ -276,7 +266,7 @@ DOM 事件流分为3个阶段：
 
 ```javascript
 div.onclick = function(event) {
-	console.log(event);
+    console.log(event);
 }
 ```
 
@@ -284,26 +274,24 @@ div.onclick = function(event) {
 
 ```javascript
 div.onclick = function(e) {
-	e = e || window.event;
+    e = e || window.event;
     console.log(e);
 }
 ```
 
- 
-
 ### 常见事件对象的属性和方法
 
-| 属性                | 描述                                                        |
-| ------------------- | ----------------------------------------------------------- |
-| e.target            | 返回触发事件的对象 不兼容ie678                              |
-| this                | 返回的是绑定事件的对象                                      |
-| e.srcElement        | 返回触发事件的对象 兼容ie678                                |
-| e.currentTarget     | 和this相似 但是不兼容ie678                                  |
-| e.type              | 返回事件的类型，比如 click、mouseover 不带on                |
-| e.cancelBubbel      | 阻止冒泡 ie678不兼容                                        |
+| 属性                  | 描述                                |
+| ------------------- | --------------------------------- |
+| e.target            | 返回触发事件的对象 不兼容ie678                |
+| this                | 返回的是绑定事件的对象                       |
+| e.srcElement        | 返回触发事件的对象 兼容ie678                 |
+| e.currentTarget     | 和this相似 但是不兼容ie678                |
+| e.type              | 返回事件的类型，比如 click、mouseover 不带on   |
+| e.cancelBubbel      | 阻止冒泡 ie678不兼容                     |
 | e.returnValue       | 阻止默认事件（默认行为）非标准 比如不让链接跳转 ie678不兼容 |
-| e.preventDefault()  | 阻止默认事件（默认行为）标准                                |
-| e.stopPropagation() | 阻止冒泡 标准                                               |
+| e.preventDefault()  | 阻止默认事件（默认行为）标准                    |
+| e.stopPropagation() | 阻止冒泡 标准                           |
 
 ### this 和 target
 
@@ -359,8 +347,6 @@ div.onclick = function(e) {
 }
 ```
 
-
-
 ## 事件委托
 
 事件委托也称为事件代理，在jQuery里面也叫事件委派。
@@ -378,15 +364,13 @@ div.onclick = function(e) {
         <li></li>
     </ul>
     <script>
-    	var ul = document.querySelector('ul');
+        var ul = document.querySelector('ul');
         ul.addEventListener('click', function(e) {
             e.target.style.backgroundColor = 'pink';
         })
     </script>
 </body>
 ```
-
-
 
 ## 常用的鼠标事件
 
@@ -412,31 +396,28 @@ document.addEventListener('selectstart', function(e) {
 
 event 对象代表了事件的状态，跟事件相关的一些列信息的集合。其中就包裹键盘事件信息和鼠标事件信息。鼠标事件对象是 MouseEvent；键盘事件对象是 KeyboardEvent。
 
-| 鼠标事件对象 | 描述                                     |
-| ------------ | ---------------------------------------- |
-| e.clientX    | 返回鼠标相对于浏览器窗口可视区的 X 坐标  |
-| e.clientY    | 返回鼠标相对于浏览器窗口可视区的 Y 坐标  |
-| e.pageX      | 返回鼠标相对于文档页面的 X 坐标 IE9+支持 |
-| e.pageY      | 返回鼠标相对于文档页面的 Y 坐标 IE9+支持 |
-| e.screenX    | 返回鼠标相对于电脑屏幕的 X 坐标          |
-| e.screenY    | 返回鼠标相对于电脑屏幕·的 Y 坐标         |
-
-
+| 鼠标事件对象    | 描述                       |
+| --------- | ------------------------ |
+| e.clientX | 返回鼠标相对于浏览器窗口可视区的 X 坐标    |
+| e.clientY | 返回鼠标相对于浏览器窗口可视区的 Y 坐标    |
+| e.pageX   | 返回鼠标相对于文档页面的 X 坐标 IE9+支持 |
+| e.pageY   | 返回鼠标相对于文档页面的 Y 坐标 IE9+支持 |
+| e.screenX | 返回鼠标相对于电脑屏幕的 X 坐标        |
+| e.screenY | 返回鼠标相对于电脑屏幕·的 Y 坐标       |
 
 ## 常用的键盘事件
 
-| 键盘事件   | 描述                                                         |
-| ---------- | ------------------------------------------------------------ |
-| onkeyup    | 某个键盘按键被松开时触发                                     |
-| onkeydown  | 某个键盘按键被按下时触发                                     |
+| 键盘事件       | 描述                                       |
+| ---------- | ---------------------------------------- |
+| onkeyup    | 某个键盘按键被松开时触发                             |
+| onkeydown  | 某个键盘按键被按下时触发                             |
 | onkeypress | 某个键盘按键被按下时触发 但是这个方法不识别功能键，比如 ctrl shift等 |
 
 当三个事件同时存在时，执行顺序永远为：keydown --> keypress --> keyup
 
 ### 键盘事件对象
 
-| 事件对象 | 描述                                                      |
-| -------- | --------------------------------------------------------- |
-| key      | 记录用户按下的键盘按键，除了ie678，还有些其他浏览器不兼容 |
-| keyCode  | 记录用户按下键的 ASCLL 值                                 |
-
+| 事件对象    | 描述                              |
+| ------- | ------------------------------- |
+| key     | 记录用户按下的键盘按键，除了ie678，还有些其他浏览器不兼容 |
+| keyCode | 记录用户按下键的 ASCLL 值                |

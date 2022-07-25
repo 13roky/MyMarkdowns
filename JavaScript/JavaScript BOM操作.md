@@ -1,4 +1,4 @@
-[toc]
+[TOC]
 
 ## 什么是 BOM
 
@@ -8,15 +8,13 @@ BOM 由一系列相关的对象构成，并且每个对象都提供了很多方�
 
 BOM 缺乏标准，JavaScript 语法的标准化组织是 ECMA，DOM 的标准化组织是 W3C，BOM 最初是 Netspace 浏览器标准的一部分。
 
-| DOM                                      | BOM                                                |
-| ---------------------------------------- | -------------------------------------------------- |
-| 文档对象模型                             | 浏览器对象模型                                     |
-| DOM 就是把 [文档] 当作一个 [对象] 来看待 | 把 [浏览器] 当做一个 [对象] 来看待                 |
-| DOM 的顶级对象是 document                | BOM 的顶级对象是 window                            |
-| DOM 主要学习的是操作页面元素             | BOM 学习的是浏览器窗口交互的一些对象               |
-| DOM 是 W3C 标准规范                      | DOM 是浏览器厂商在各自浏览器上定义的，兼容性比较差 |
-
-
+| DOM                        | BOM                         |
+| -------------------------- | --------------------------- |
+| 文档对象模型                     | 浏览器对象模型                     |
+| DOM 就是把 [文档] 当作一个 [对象] 来看待 | 把 [浏览器] 当做一个 [对象] 来看待       |
+| DOM 的顶级对象是 document        | BOM 的顶级对象是 window           |
+| DOM 主要学习的是操作页面元素           | BOM 学习的是浏览器窗口交互的一些对象        |
+| DOM 是 W3C 标准规范             | DOM 是浏览器厂商在各自浏览器上定义的，兼容性比较差 |
 
 ## BOM 的构成
 
@@ -28,8 +26,6 @@ BOM 缺乏标准，JavaScript 语法的标准化组织是 ECMA，DOM 的标准�
 在调用的时候可以省略 window，前面学习的对话框都属于 window 对象方法，如 alert()、prompt()等。
 
 **注意：window下的一个特殊属性 window.name**
-
-
 
 ## 页面加载事件
 
@@ -47,8 +43,6 @@ window.onload 是窗口（页面）加载事件，当文档内容完全加载完
 2. window.onload 传统注册事件方式只能写一次，如果有多个，会以最后一个 window.onload 为准。
 3. 如果使用 addEventListener 则没有限制，写多少个都行。
 
-
-
 ```javascript
 document.addEventListener("DOMcontentLoaded",function(){})
 ```
@@ -58,8 +52,6 @@ DOMContentLoaded 事件触发时，仅当 DOM 加载完成，不包括样式表�
 ie9以上才支持。
 
 如果页面有很多图图片，从用户访问到 onload 触发可能需要较长的时间，交互效果就不能实现，必然影响用户体验，此时用DOMContentLoaded 事件比较合适。
-
-
 
 ## 调整窗口大小事件
 
@@ -80,8 +72,6 @@ window.onresize 是调整窗口大小加载事件，当触发时就调用的处�
 window.innerWidth
 ```
 
-
-
 ## 定时器
 
 window 对象给我们提供了 2 种非常好的方法 - **定时器**。
@@ -92,7 +82,7 @@ window 对象给我们提供了 2 种非常好的方法 - **定时器**。
 window.setTimeout(调用函数, [延迟的毫秒数])
 // 在调用的时候 window 可以省略
 setTimeout(function() {
-	console.log('三秒过去了');
+    console.log('三秒过去了');
 }, 3000)
 // 延迟时间单位是毫秒，如果不写默认为0
 function callback(){
@@ -132,8 +122,6 @@ window.clearTimeout(timeoutID)
 clearTimeout()
 ```
 
-
-
 ### setInterval() 定时器
 
 ```javascript
@@ -157,8 +145,6 @@ window.clearInterval(timeoutID)
 clearInterval()
 ```
 
-
-
 ### this
 
 在我们使用停止定时器时，不能在定时器中使用 this 停止定时器。
@@ -166,8 +152,6 @@ clearInterval()
 因为定时器的时 window 对象的函数，this 指向当前对象，所以指向的是 windows。
 
 所以 this 指向的是调用函数的**对象**。
-
-
 
 ## JS 执行机制
 
@@ -199,8 +183,6 @@ console.log(2);
 
 在做一件事情时，因为这件事情需要花费很长时间，在做这件事情的同时，你还可以去处理其他的事情。比如做饭的异步做法，在我们烧水的同时，利用这10分钟，去切菜，炒菜。
 
-
-
 **同步和异步的本质区别：这条流水线上各个流程的执行顺序不同**。
 
 ### JS 执行机制的本质
@@ -222,14 +204,14 @@ console.log(2);
 1. 同步任务：所有的同步任务都在主线程上执行，形成一个**执行栈**。
 
 2. 异步任务：异步任务是通过**回调函数**来实现的，在执行栈执行同步任务时，其中的回调函数会被放到任务队列（消息队列）里面等待主线程执行结束再执行。
-
+   
    一般来说异步任务有如下三种类型：
-
+   
    - 普通事件，如 click、resize等
    - 资源加载，如 load、error等
    - 定时器，包括 setInterval、setTimeout等
 
-| 主线程执行栈       | 任务队列（消息队列）          |
+| 主线程执行栈             | 任务队列（消息队列）                    |
 | ------------------ | ----------------------------- |
 | console.log(1);    | function(){ console.log(3); } |
 | setTimeout(fn, 0); |                               |
@@ -260,8 +242,6 @@ setTimeout(function() {
 
 重点：由于主线程不断的重复获取任务、执行任务、再获取任务、再执行，所以这种机制被称为**事件循环**
 
-
-
 ## location 对象
 
 window 对象给我们提供了一个 location 属性，用于**获取设置窗体的 url**，并且可以用于解析 url。因为这个属性返回的是一个对象，所以我们将这个属性也成为 location 对象。
@@ -277,25 +257,25 @@ protocol://host[:port]/path/[?query]#fragment
 http://www.brokyz.tk/index.html?name=andy&age=18#link
 ```
 
-| 组成     | 说明                                                         |
-| -------- | ------------------------------------------------------------ |
-| protocol | 通信协议 常用的 http、ftp、maito等                           |
-| host     | 主机（域名）                                                 |
+| 组成       | 说明                                     |
+| -------- | -------------------------------------- |
+| protocol | 通信协议 常用的 http、ftp、maito等               |
+| host     | 主机（域名）                                 |
 | port     | 端口号 可选，省略时使用方案默认端口，如http默认为80          |
 | path     | 路径 有 零或多个/符号隔开的字符串，一般用来表示主机上的一个目录或文件地址 |
-| query    | 参数 以键值对的形式，通过&符号分隔                           |
-| fragment | 片段 #后面内容 常见于链接 锚点                               |
+| query    | 参数 以键值对的形式，通过&符号分隔                     |
+| fragment | 片段 #后面内容 常见于链接 锚点                      |
 
 ### location 对象的属性
 
-| 属性              | 返回值                                                 |
-| ----------------- | ------------------------------------------------------ |
+| 属性                | 返回值                             |
+| ----------------- | ------------------------------- |
 | location.href     | 获取或者设置 整个 URL，如果不打印设置url会实现页面跳转 |
-| location.host     | 返回主机（域名）                                       |
-| location.port     | 返回端口号 如果未写则返回空字符串                      |
-| location.pathname | 返回路径                                               |
-| location.search   | 返回参数                                               |
-| location.hash     | 返回片段 #后面内容 常用于链接 锚点                     |
+| location.host     | 返回主机（域名）                        |
+| location.port     | 返回端口号 如果未写则返回空字符串               |
+| location.pathname | 返回路径                            |
+| location.search   | 返回参数                            |
+| location.hash     | 返回片段 #后面内容 常用于链接 锚点             |
 
 ```javascript
 // 5秒后页面跳转
@@ -337,13 +317,11 @@ setTimeout(function() {
 
 ### location 常用方法
 
-| location方法          | 返回值                                                       |
-| --------------------- | ------------------------------------------------------------ |
-| location.assign(url)  | 跟 href 一样，可以跳转页面（也称为重定向页面）               |
-| location.replace(url) | 跳转替换当前页面，因为不记录历史，所以不能后退页面           |
+| location方法            | 返回值                                                 |
+| --------------------- | --------------------------------------------------- |
+| location.assign(url)  | 跟 href 一样，可以跳转页面（也称为重定向页面）                          |
+| location.replace(url) | 跳转替换当前页面，因为不记录历史，所以不能后退页面                           |
 | location.reload()     | 重新加载页面，相当于刷新按钮或者 f5 如果参数为true 强制刷新 ctrl+f5（无视浏览器缓存） |
-
-
 
 ## navigator 对象
 
@@ -354,19 +332,16 @@ navgator 包含了有关浏览器的相关信息，他有很多属性，我们�
 ```
 //
 if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
-            window.location.href = "../H5/index.html"; //手机
-        }
+      window.location.href = "../H5/index.html"; //手机
+}
 ```
-
-
 
 ## history 对象
 
 window 对象给我们提供了一个 hostory 对象，与浏览器历史记录进行交互。该对象包含用户（在浏览器窗口中）访问过的 URL。
 
-| history对象方法   | 作用                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| history.back()    | 可以后退功能                                                 |
-| history.forward() | 前进功能                                                     |
-| history.go(参数)  | 前进后退功能 参数如果是1 前进1 个页面，2是前进2，如果时-1 后退1 个页面 |
-
+| history对象方法       | 作用                                        |
+| ----------------- | ----------------------------------------- |
+| history.back()    | 可以后退功能                                    |
+| history.forward() | 前进功能                                      |
+| history.go(参数)    | 前进后退功能 参数如果是1 前进1 个页面，2是前进2，如果时-1 后退1 个页面 |

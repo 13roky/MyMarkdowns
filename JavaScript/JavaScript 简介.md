@@ -1,4 +1,4 @@
-[toc]
+[TOC]
 
 ## 什么是 JavaScrip
 

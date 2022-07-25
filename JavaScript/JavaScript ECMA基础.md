@@ -1,4 +1,4 @@
-[toc]
+[TOC]
 
 ## 注释
 
@@ -16,10 +16,10 @@
 
 ---
 
-| 方法             | 说明                           | 归属   |
-| ---------------- | ------------------------------ | ------ |
-| alert(msg)       | 浏览器弹出警示框               | 浏览器 |
-| console.log(msg) | 浏览器控制台打印输出信息       | 浏览器 |
+| 方法               | 说明              | 归属  |
+| ---------------- | --------------- | --- |
+| alert(msg)       | 浏览器弹出警示框        | 浏览器 |
+| console.log(msg) | 浏览器控制台打印输出信息    | 浏览器 |
 | prompt(info)     | 浏览器弹出输入框，用户可以输入 | 浏览器 |
 
 ---
@@ -43,7 +43,7 @@ var test03 = 'i am str'；
 test04 = 'i am str'；
 // 多行
 var test = 18，
-	test02 = 'i am str';
+    test02 = 'i am str';
 ```
 
 **注意：**
@@ -52,9 +52,7 @@ var test = 18，
 
 - 未声明变量，在控制台中调用输出将报错。
 
-
 ### 变量的命名规范
-
 
 - 由字母(A-Za-z)、数字(0-9)、下划线()、美元符号($)组成，如：usrAge，num01，_name
 
@@ -72,7 +70,7 @@ var test = 18，
 
 ---
 
-##   数据类型
+## 数据类型
 
 ---
 
@@ -87,13 +85,13 @@ JavaScript 中的数据类型类似于 Python，都是一种弱类型。他们�
 
 **简单数据类型**
 
-| 简单数据类型 | 说明                                        | 默认值    |
-| ------------ | ------------------------------------------- | --------- |
-| Number       | 数字型，包含整型和浮点型                    | 0         |
-| Boolean      | 布尔值型，true / false                      | false     |
-| String       | 字符串型 字符串需要带引号                   | “”        |
-| Undefined    | 声明了变量但是没有负值此时变量就为Undefined | undefined |
-| Null         | 声明变量为空值                              | null      |
+| 简单数据类型    | 说明                         | 默认值       |
+| --------- | -------------------------- | --------- |
+| Number    | 数字型，包含整型和浮点型               | 0         |
+| Boolean   | 布尔值型，true / false          | false     |
+| String    | 字符串型 字符串需要带引号              | “”        |
+| Undefined | 声明了变量但是没有负值此时变量就为Undefined | undefined |
+| Null      | 声明变量为空值                    | null      |
 
 ### 关于数字型
 
@@ -121,14 +119,14 @@ JavaScript 中的数据类型类似于 Python，都是一种弱类型。他们�
 
 **转义字符**
 
-| 转义符 | 说明                    |
-| ------ | ----------------------- |
-| \n     | 换行                    |
-| \\\    | 斜杠\                   |
-| \\'    | 单引号                  |
-| \\”    | 双引号                  |
-| \t     | tab 缩进                |
-| \b     | 空格，b 是 blank 的意思 |
+| 转义符 | 说明               |
+| --- | ---------------- |
+| \n  | 换行               |
+| \\\ | 斜杠\              |
+| \\' | 单引号              |
+| \\” | 双引号              |
+| \t  | tab 缩进           |
+| \b  | 空格，b 是 blank 的意思 |
 
 **字符段长度 length**
 
@@ -186,20 +184,20 @@ console.log(typeof str)
 
 **转换为字符串**
 
-| 方式               | 说明                         | 案例                                |
-| ------------------ | ---------------------------- | ----------------------------------- |
-| toString()         | 转字符串                     | var num = 1; alert(num.toString()); |
-| String() 强制转换  | 转字符串                     | var num = 1; alter(String(num))     |
-| **加号拼接字符串** | 和字符串拼接的结果都是字符串 | var num = 1; alter(num + ‘’)        |
+| 方式            | 说明             | 案例                                  |
+| ------------- | -------------- | ----------------------------------- |
+| toString()    | 转字符串           | var num = 1; alert(num.toString()); |
+| String() 强制转换 | 转字符串           | var num = 1; alter(String(num))     |
+| **加号拼接字符串**   | 和字符串拼接的结果都是字符串 | var num = 1; alter(num + ‘’)        |
 
 **转换为数字型**
 
-| 方式                    | 说明                               | 案例               |
-| ----------------------- | ---------------------------------- | ------------------ |
-| parseInt(string) 函数   | 将string类型转换为整数数值型       | parseInt(‘78’)     |
-| parseFloat(string) 函数 | 将string类型转换为浮点数数值型     | parseFloat(‘3,14’) |
-| Number() 强制转换函数   | 将string类型转换为数值型           | Number(‘12’)       |
-| js 隐式转换 （- * /）   | 利用算数运算隐式转换 (注意不能用+) | ‘12’ - 0           |
+| 方式                    | 说明                  | 案例                 |
+| --------------------- | ------------------- | ------------------ |
+| parseInt(string) 函数   | 将string类型转换为整数数值型   | parseInt(‘78’)     |
+| parseFloat(string) 函数 | 将string类型转换为浮点数数值型  | parseFloat(‘3,14’) |
+| Number() 强制转换函数       | 将string类型转换为数值型     | Number(‘12’)       |
+| js 隐式转换 （- * /）       | 利用算数运算隐式转换 (注意不能用+) | ‘12’ - 0           |
 
 **转换为布尔**
 
@@ -224,13 +222,13 @@ console.log(Boolean('你好')); //true
 
 ### 算数运算符
 
-| 运算符 | 描述 | 实例                  |
-| ------ | ---- | --------------------- |
-| +      | 加   |                       |
-| -      | 减   |                       |
-| *      | 乘   |                       |
-| /      | 除   |                       |
-| %      | 取余 | 5 % 3 = 2; 3 % 5 = 3; |
+| 运算符 | 描述  | 实例                    |
+| --- | --- | --------------------- |
+| +   | 加   |                       |
+| -   | 减   |                       |
+| *   | 乘   |                       |
+| /   | 除   |                       |
+| %   | 取余  | 5 % 3 = 2; 3 % 5 = 3; |
 
 **浮点数运算时会有问题**
 
@@ -268,23 +266,23 @@ console.log(num++ + 10) // 这里返回20，运算后num变为11
 
 比较运算返回的是布尔类型，一般的符号一般默认会转换数据类型进行比较
 
-| 运算符  | 说明                        | 案例 | 结果 |
-| ------- | --------------------------- | ---- | ---- |
-| <       | 小于                        |      |      |
-| >       | 大于                        |      |      |
-| >=      | 大于等于                    |      |      |
-| <=      | 小于等于                    |      |      |
-| ==      | 等于                        |      |      |
-| !=      | 不等于                      |      |      |
-| === !== | 全等 要求值和数据类型都一致 |      |      |
+| 运算符     | 说明             | 案例  | 结果  |
+| ------- | -------------- | --- | --- |
+| <       | 小于             |     |     |
+| >       | 大于             |     |     |
+| >=      | 大于等于           |     |     |
+| <=      | 小于等于           |     |     |
+| ==      | 等于             |     |     |
+| !=      | 不等于            |     |     |
+| === !== | 全等 要求值和数据类型都一致 |     |     |
 
 ### 逻辑运算符
 
-| 逻辑运算符 | 说明                   | 案例 |
-| ---------- | ---------------------- | ---- |
-| &&         | “逻辑与”，简称“与” and |      |
-| \|\|       | ”逻辑或“，简称”或“ or  |      |
-| !          | ”逻辑非“，简称“非” not |      |
+| 逻辑运算符 | 说明              | 案例  |
+| ----- | --------------- | --- |
+| &&    | “逻辑与”，简称“与” and |     |
+| \|\|  | ”逻辑或“，简称”或“ or  |     |
+| !     | ”逻辑非“，简称“非” not |     |
 
 **短路运算（逻辑中断）**
 
@@ -292,9 +290,9 @@ console.log(num++ + 10) // 这里返回20，运算后num变为11
 
 - 逻辑与
 
-​	如果第一个表达式的值为真，则返回表达式2
+​    如果第一个表达式的值为真，则返回表达式2
 
-​	如果第一个表达式的值为假，则返回表达式1
+​    如果第一个表达式的值为假，则返回表达式1
 
 ```javascript
 console.log(123 && 456); // 结果456
@@ -303,9 +301,9 @@ console.log(0 && 1 + 2 && 456 * 7) //结果0 ，在0之后的停止执行
 ```
 
 - 逻辑或
-
+  
   如果第一个表达式的值为真，则返回表达式1
-
+  
   如果第一个表达式的值为假，则返回表达式2
 
 ```javascript
@@ -318,24 +316,24 @@ console.log(0 && 1 + 2 && 456 * 7) //结果3 ，在1+2之后的停止执行
 
 `num += 2` 等同于 `num = num +2`
 
-| 赋值运算符 | 说明 | 案例 |
-| ---------- | ---- | ---- |
-| =          |      |      |
-| +=、-=     |      |      |
-| *=、/=、%= |      |      |
+| 赋值运算符    | 说明  | 案例  |
+| -------- | --- | --- |
+| =        |     |     |
+| +=、-=    |     |     |
+| *=、/=、%= |     |     |
 
 ### 运算优先级
 
-| 优先级 | 运算符     | 顺序             |
-| ------ | ---------- | ---------------- |
-| 1      | 小括号     | ()               |
-| 2      | 一元运算符 | ++ -- !          |
-| 3      | 算数运算符 | 先乘除后加减     |
-| 4      | 关系运算符 | > >= < <=        |
-| 5      | 相等运算符 | == ！= === ！=== |
-| 6      | 逻辑运算符 | 先&&后\|\|       |
-| 7      | 赋值运算符 | =                |
-| 8      | 逗号运算符 | ，               |
+| 优先级 | 运算符   | 顺序             |
+| --- | ----- | -------------- |
+| 1   | 小括号   | ()             |
+| 2   | 一元运算符 | ++ -- !        |
+| 3   | 算数运算符 | 先乘除后加减         |
+| 4   | 关系运算符 | > >= < <=      |
+| 5   | 相等运算符 | == ！= === ！=== |
+| 6   | 逻辑运算符 | 先&&后\|\|       |
+| 7   | 赋值运算符 | =              |
+| 8   | 逗号运算符 | ，              |
 
 ---
 
@@ -351,7 +349,7 @@ console.log(0 && 1 + 2 && 456 * 7) //结果3 ，在1+2之后的停止执行
 
 ```javascript
 if (条件表达式){
-    
+
 }
 ```
 
@@ -359,7 +357,7 @@ if (条件表达式){
 
 ```javascript
 if(条件){
-    
+
 }else{
 
 }
@@ -369,13 +367,13 @@ if(条件){
 
 ```javascript
 if(条件){
-    
+
 }else if(条件2){
-    
+
 }else if(条件3){
-    
+
 }else{
-    
+
 }
 ```
 
@@ -392,11 +390,11 @@ if(条件){
 
 ```javascript
 switch(表达式){
-	case value1:
+    case value1:
         语句1；
-     	break;
-	case value2:
-       	语句2;
+         break;
+    case value2:
+           语句2;
         break;
     default:
         最后的语句;
@@ -423,7 +421,7 @@ switch(表达式){
 
 ```javascript
 for(i=0;i<10;i++){
-    
+
 }
 ```
 
@@ -431,7 +429,7 @@ for(i=0;i<10;i++){
 
 ```javascript
 while(条件){
-    
+
 }
 ```
 
@@ -439,7 +437,7 @@ while(条件){
 
 ```javascript
 do{
-    
+
 }while(条件)
 ```
 
@@ -635,7 +633,7 @@ arguments 是一种伪数组，不是真正意义上的数组，它具有数组�
 var num = 10;
 
 function fn(){ // 外部函数
-	var num = 20;
+    var num = 20;
     function fun(){ // 内部函数
         console.log(num)
     }
@@ -665,7 +663,7 @@ js 引擎运行 js 代码分为两步：
 var num = 10;
 fun();
 function fun() {
-	console.log(num);
+    console.log(num);
     var num = 20;
 }
 
@@ -674,7 +672,7 @@ function fun() {
 var num;
 function fun() {
     var num;
-	console.log(num); // 由于作用域链，输出的是上面那个只定义的num
+    console.log(num); // 由于作用域链，输出的是上面那个只定义的num
     num = 20;
 }
 num = 10;
@@ -776,13 +774,9 @@ for(var k in obj){
 }
 ```
 
-
-
 ## 内置对象
 
 在 JS 中除了我们自己定义创建的对象以外，还存在一些 JS 自带的对象，这为我们提供了一些常用的功能，我们直接拿来使用即可。
-
-
 
 ### Math 对象
 
@@ -827,7 +821,7 @@ Math.round() // 四舍五入，注意 当为-3.5时是，-3
 #### 绝对值
 
 ```javascript
-Math.abs()	// 绝对值 
+Math.abs()    // 绝对值 
 // 存在隐士转换，会把字符型能转换成数字的转换为数字型
 ```
 
@@ -844,9 +838,7 @@ Math.floor(Math.random() * (max - min)) + min;
 Math.floor(Math.random() * (max - min + 1)) + min;
 ```
 
-
-
-### Date 日期对象 
+### Date 日期对象
 
 Date 是一个构造函数，我们只能通过 Date 构造函数来实例化对象。
 
@@ -862,20 +854,18 @@ var birthday = new Date('1995-12-17T03:24:00');
 var birthday = new Date(1995, 11, 17); // 从0开始数，这里是1995年 12月 17日
 var birthday = new Date(1995, 11, 17, 3, 24, 0);
 
-console.log(Date.now())	// 输出自Unix诞生到现在的毫秒数
+console.log(Date.now())    // 输出自Unix诞生到现在的毫秒数
 console.log(Date.parse('04 Dec 1995 00:12:00 GMT')) // 输出自Unix诞生到指定时间的毫秒数
 console.log(date.getFullYear()) // 获得 date 的年
-console.log(date.getMonth()+1)	// 获得 date 的月。由于月从0算起，所以加一
-console.log(date.getDate())	// 获得 date 的日。
+console.log(date.getMonth()+1)    // 获得 date 的月。由于月从0算起，所以加一
+console.log(date.getDate())    // 获得 date 的日。
 console.log(date.getHours()) // 获得 date 的时。
-console.log(date.getMinutes())	// 获得 date 的分。
-console.log(date.getSeconds())	// 获得 date 的秒。
+console.log(date.getMinutes())    // 获得 date 的分。
+console.log(date.getSeconds())    // 获得 date 的秒。
 console.log(date.getDay()) // 获得 date 时当前周的第几天，从0其，0是第一天。
 // 同理如果get换为set就是设置
 date.setMonth(0) // 设置date月份为1月
 ```
-
-
 
 ### Array 数组对象
 
@@ -889,7 +879,7 @@ JavaScript 的 **`Array`** 对象是用于构造数组的全局对象，数组�
 // 通过字面量创建数组
 var arr = [1,2,3];
 // 通过构造函数创建
-var arr = new Array(3);	// 创建了一个长度为3的空数组
+var arr = new Array(3);    // 创建了一个长度为3的空数组
 var arr = new Array(1,2,3) // 创建了一个数组为[1,2,3],等价于第一种方法；这种写法必须是两个元素以上才行。
 ```
 
@@ -897,7 +887,7 @@ var arr = new Array(1,2,3) // 创建了一个数组为[1,2,3],等价于第一种
 
 ```javascript
 // instanceof 运算符用来检测是否为数组 
-console.log([1,2] instanceof Array);	// 同理可以用于检测其他类型
+console.log([1,2] instanceof Array);    // 同理可以用于检测其他类型
 // Array.isArray() 方法
 console.log(Array.isArray(arr))
 ```
@@ -907,9 +897,9 @@ console.log(Array.isArray(arr))
 ```javascript
 var arr = [1,2,3];
 // 使用push()进行尾插入
-arr.push(4，5);	// 将4，5尾插入数组arr，返回新数组的长度，原数组会发生变化
+arr.push(4，5);    // 将4，5尾插入数组arr，返回新数组的长度，原数组会发生变化
 // 使用unshift()进行首插入
-arr.unshift(-1.0)	// 将-1,0首插入数组arr，返回新数组的长度，原数组会发生变化
+arr.unshift(-1.0)    // 将-1,0首插入数组arr，返回新数组的长度，原数组会发生变化
 ```
 
 #### 删除数组元素
@@ -927,7 +917,7 @@ arr.shift();
 ```javascript
 const array1 = ['one', 'two', 'three'];
 // reverse()翻转数组，不改变原数组
-const reversed = array1.reverse();	//out:"reversed:" Array ["three", "two", "one"]
+const reversed = array1.reverse();    //out:"reversed:" Array ["three", "two", "one"]
 // sort()对数组进行排序 冒泡方法，不改变原数组
 var arr = [1, 30, 'March', 'Jan', 'Feb', 'Dec',4, 21, 100000];
 console.log(arr.sort()); // [1, 100000, 21, 30, 4, "Dec", "Feb", "Jan", "March"] 这种不带参数只根据第一个字符进行排序
@@ -946,7 +936,7 @@ console.log(arr.sort(function(a,b){
 ```javascript
 var arr = [1,2,3,4,5,1,2];
 // indexOf()从前往后查找
-console.log(arr.indexOf(2));	// 返回数组中指定元素的第一个索引
+console.log(arr.indexOf(2));    // 返回数组中指定元素的第一个索引
 // lastIndexOf()从后往前查找
 console.log(arr.lastIndexOf(2));
 ```
@@ -1027,8 +1017,6 @@ console.log(array3);
 // > Array ["a", "b", "c", "d", "e", "f", "d", "e", "f"]
 ```
 
-
-
 ### String 字符串对象
 
 **`String`** 全局对象是一个用于字符串或一个字符序列的构造函数。
@@ -1070,8 +1058,8 @@ str = 'red';
 
 ```javascript
 var str = 'brokyzbrokyz';
-console.log(str.indexOf('k'));	// 3,只输出第一个
-console.log(str.indexOf('k',4))	// 9, 指定从3后开始查找
+console.log(str.indexOf('k'));    // 3,只输出第一个
+console.log(str.indexOf('k',4))    // 9, 指定从3后开始查找
 ```
 
 查找所有位置
@@ -1107,11 +1095,11 @@ console.log(str[3])
 
 #### 拼接和截取字符串
 
-| 方法名                    | 说明                                                         |
-| ------------------------- | ------------------------------------------------------------ |
-| concat(str1,str2,str3...) | concat() 方法用于连接两个或多个字符串。拼接字符串，等效于+，+更常用 |
-| substr(start,length)      | 从start开始，向后去length个个数                              |
-| slice(start,end)          | 从start开始，截取到end位置，end取不到                        |
+| 方法名                       | 说明                                          |
+| ------------------------- | ------------------------------------------- |
+| concat(str1,str2,str3...) | concat() 方法用于连接两个或多个字符串。拼接字符串，等效于+，+更常用     |
+| substr(start,length)      | 从start开始，向后去length个个数                       |
+| slice(start,end)          | 从start开始，截取到end位置，end取不到                    |
 | substring(start,end)      | 从start开始，截取到end位置，end取不到，基本和slice相同，但是不支持负号 |
 
 #### 替换字符串
@@ -1138,13 +1126,11 @@ console.log(str.split(','));
 
 ```javascript
 // toLowerCase() 将字符串转换为小写
-console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());	// 中文简体 zh-cn || zh-hans
+console.log('中文简体 zh-CN || zh-Hans'.toLowerCase());    // 中文简体 zh-cn || zh-hans
 // toupperCase() 将字符串转换为大写
 console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
 // expected output: "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG."
 ```
-
-
 
 ## JS 简单数据类型和复杂数据类型
 
@@ -1155,8 +1141,6 @@ console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
   - 简单数据类型null，返回的时一个空对象 object。如果有个变量我们以后打算存储为对象，但是现在不需要，这个时候就可以赋值为null。
 - 引用类型：复杂数据类型，在存储时变量中存储的仅仅是地址（引用），因此叫做引用类型。
   - 通过 new 关键字创建的对象（内置对象、自定义对象等），如 Object、Array、Date等。
-
-
 
 ### 堆和栈
 
@@ -1170,8 +1154,6 @@ console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
 
 **注意：JS 中没有堆栈的概念，通过堆栈的方式们可以让大家更容易理解代码的一些执行方式，便于将来学习其他语言。**
 
-
-
 ### 简单数据类型的内存分配
 
 值类型变量的数据直接存放在变量（栈空间）中
@@ -1180,8 +1162,6 @@ console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
 
 会在栈中开辟一个内存空间，里面存放了18这个值，然后让 age指向18的内存地址。
 
-
-
 ### 复杂数据类型的内存分配
 
 复杂数据类型的存储和栈堆都有关系。
@@ -1189,8 +1169,6 @@ console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
 比如 `var arr = [1,2,3];`
 
 会在堆里面开辟一个空间，存放了[1,2,3]，然后在栈里面会存放堆的内存地址，之后 arr 会指向栈里面的内存地址，然后由栈中的内存地址指向堆里面存放的数据。
-
-
 
 ### 简单数据类型传参
 
@@ -1202,19 +1180,17 @@ console.log('The quick brown fox jumps over the lazy dog.'.toUpperCase());
 
 但是如果是string，就得考虑字符串的不可变性了。
 
-
-
 ### 复杂数据类型传参
 
 有如下代码：
 
 ```javascript
 function Person(name) {
-	this.name = name;
+    this.name = name;
 }
 
 funtion f1(x) {
-	console.log(x.name);
+    console.log(x.name);
     x.name = "Z";
     console.log(x.name);
 }
