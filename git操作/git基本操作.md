@@ -92,7 +92,7 @@ a = 3
 ```git
 # 进入当前用户文件夹，删除.ssh文件
 # 生成密钥
-ssh-keygen -t rsa -C brokyz@foxmail.com
+ssh-keygen -t rsa -C brokyz@aliyun.com
 # 提示全部回车
 ```
 

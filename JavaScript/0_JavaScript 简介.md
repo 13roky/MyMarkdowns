@@ -1,5 +1,3 @@
-[TOC]
-
 # 什么是 JavaScrip
 
 JavaScript 是一种脚本语言，这门语言可以用于 HTML 和 web，还可以广泛的适用于服务器、PC、笔记本电脑、平板电脑、和只能手机等设备。
@@ -13,7 +11,7 @@ JavaScript的标准是ECMAScript 。截至 2012 年，所有浏览器都完整�
 - JavaScript ES基础
 - JavaScript DOM操作
 - JavaScript BOM操作
-- JavaScrpit 面向对象
+- JavaScript 面向对象
 - JavaScript ES6新特性
 
 # JavaScript 命名规范
