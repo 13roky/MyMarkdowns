@@ -71,7 +71,6 @@
 	<p>上面是插槽</p>
 </template>
 
-
 <MySlot>
 	<tamplate v-slot: slot01="scope">
     	<p>插槽1</p>
