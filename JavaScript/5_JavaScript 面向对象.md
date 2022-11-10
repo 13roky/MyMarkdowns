@@ -571,7 +571,7 @@ console.log(flag);
 
 ### some和forEach的区别
 
-- 在forEach()里面，遇到了return会跳出本次循环但是继续下一次迭代（filter和forEach相同）
+- 在forEach()里面，**遇到了return会跳出本次循环但是继续下一次迭代（filter和forEach相同）**
 
 ```js
 var arr = ['pink', 'green', 'red', 'blue'];
@@ -584,7 +584,7 @@ arr.forEach(function (value) {
 })
 ```
 
-- 在some()里面，遇到了return true就是终止遍历 迭代效率更高
+- **在some()里面，遇到了return true就是终止遍历 迭代效率更高**
 
 ```js
 var arr = ['pink', 'green', 'red', 'blue'];

@@ -47,6 +47,70 @@ promise对象的值是promise实例对象的一个属性[PromiseResult]。
 
 ![](https://pic.imgdb.cn/item/6329178e16f2c2beb155477a.jpg)
 
+## Promise 运行机制
+
+```js
+const p = new Promise((res, err) => {
+    setTimeout(() => {
+        console.log("promise running 1")
+    }, 1000)
+    res("promise fulfilled")
+    console.log("promise running 2")
+})
+
+console.log(p)
+
+p.then((res)=>{
+    console.log("p.then res")
+},(err)=>{
+    console.log("p.then err")
+})
+/*
+	> promise running 2
+	> Promise {PromiseState: "fulfilled"}
+	> p.then res
+	> promise running 1
+*/
+```
+
+- 对于 Promise 中的代码，是在声明 p 时就会立即执行。尽管其中存在异步任务，异步任务本身也是立即执行的，异步任务的回调函数会被放到队列中等待条件满足后执行。
+- res() 和 err() 函数不会停止代码运行，只会改变 p 的状态，改变状态之后下面的代码会继续执行，直至 Promise 中的代码运行完毕。
+
+- Promse 出现报错会停止之后代码运行，并立即改变状态 Pending -》rejected。
+
+```js
+const p = new Promise((res, err) => {
+    setTimeout(() => {
+        console.log("promise running 1")
+        res("promise fulfilled")
+    }, 5000) 
+    console.log("promise running 2")
+})
+
+console.log(p)
+
+p.then((res)=>{
+    console.log("p.then res")
+},(err)=>{
+    console.log("p.then err")
+})
+
+console.log("end")
+
+/*
+	> promise running 2
+    > Promise {PromiseState: ...}
+    > end
+    > promise running 1
+    > p.then res
+*/
+```
+
+<iframe width="100%" height="300" src="//jsrun.net/G8EKp/embedded/js/light" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+- 当使用 p.then 时，如果 p 中的 res() 或 err() 函数没有在异步回调函数中延迟改变 Promise 状态，p.then 会立即判断 Promise 状态并执行其后续逻辑。如果 p 中的 res() 或 err() 函数在异步回调函数中延迟改变 Promise 状态，那么 p.then 会等待 Promise 中的异步回调函数改变 Promise 状态后在运行，此时 p.then 也会变成异步任务进入队列等待执行。
+- Promise 对象中的 PromiseState **属性类似于数据代理**，其值取决于你什么时候查看。对于以上代码，尽管 Promise 对象在改变状态之前被输出。但是在你第一次查看时，其显示的是你查看时的状态。比如 5s 前查看输出结果时 pending，但是 5s 后点开查看结果就会变成 fulfilled。一旦第一次查看之后，其中的控制台输出值就固定了。
+
 ## Promise相关api
 
 ### Promise 构造函数
@@ -529,4 +593,3 @@ p.then(value => {
   console.log(value)
 })
 ```
-

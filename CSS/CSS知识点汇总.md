@@ -1,11 +1,3 @@
-[toc]
-
-
-
-
-
-
-
 # css属性书写顺序
 
 1. 布局定位属性：display / position / float / clear / visibility / overflow
@@ -14,7 +6,9 @@
 4. 其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow /background:linear-gradient…
 
 # 选择器
+
 ## 基础选择器
+
 1. 标签选择器：`div {}`
 2. 类选择器：`.header {}`
 3. id选择器：`#box {}`
@@ -26,29 +20,29 @@
 3. 并集选择器：`.header, #box {}`
 4. 伪类选择器：`a:link{未点击的链接} a:visited{访问过的} a:hover{鼠标经过} a:active{鼠标按下还未抬起} input:focus{获取到焦点的表单}`
 
-伪类选择器具有使用顺序否为无效，link>visited>hover>active
+伪类选择器具有使用顺序否为无效，``link > visited > hover > active`
 
-# font text background属性
+# 基础属性（文字、文本、背景）
 
-|    属性     |       表示       |                            注意点                            |
-| :---------: | :--------------: | :----------------------------------------------------------: |
-|  font-size  |       字号       |                       通常单位是px像素                       |
-| font-family |       字体       |      字体之间用逗号隔开，如果字体名字有空格需要用单引号      |
-| font-weight |     字体粗细     |    加粗是700或blod，不加粗是normal或400，数字后面不加单位    |
-| font-style  |     字体样式     |                 斜体是italic，不倾斜是normal                 |
-|    font     | 字体复合属性连写 | 属性连写有顺序style>weight>size/height>family。其中字号和字体必须出现，否则无效。 |
-| color           | 文本颜色 | 通常用十六进制，可以写简写，如#aa00ff可以写成#a0f        |
-| test-align      | 文本对齐 | 可以设定文字水平对齐方式                                 |
-| text-indent     | 文本缩进 | 通常用于段落缩进两个字的距离 2em                         |
-| text-decoration | 文本修饰 | 添加下滑线和取消下划线                                   |
-| line-height     | 行高     | 控制行与行之间的距离，其中又上边距，字体大小，下边距组成 |
-| background-color      | 背景颜色     | 预定义的颜色值/十六进制/RGB代码                    |
-| background-image      | 背景图片     | url(图片路径)                                      |
-| background-repeat     | 是否平铺     | repeat/no-repeat/repeat-x/repeat-y                 |
-| background-position   | 背景位置     | length/position 分别是 x 和 y 坐标                 |
-| background-attachment | 背景附着     | scroll（背景滚动）/fixed（背景固定）               |
-| 背景简写              | 书写更简单   | 背景颜色 背景图片地址 背景平铺 背景滚动 背景位置； |
-| 背景色半透明          | 背景颜色透明 | background: rgba(0,0,0,0.3); 后面必须是4个值       |
+|         属性          |       表示       |                                      注意点                                       |
+| :-------------------: | :--------------: | :-------------------------------------------------------------------------------: |
+|       font-size       |       字号       |                                 通常单位是px像素                                  |
+|      font-family      |       字体       |                字体之间用逗号隔开，如果字体名字有空格需要用单引号                 |
+|      font-weight      |     字体粗细     |              加粗是700或blod，不加粗是normal或400，数字后面不加单位               |
+|      font-style       |     字体样式     |                           斜体是italic，不倾斜是normal                            |
+|         font          | 字体复合属性连写 | 属性连写有顺序style>weight>size/height>family。其中字号和字体必须出现，否则无效。 |
+|         color         |     文本颜色     |                 通常用十六进制，可以写简写，如#aa00ff可以写成#a0f                 |
+|      test-align       |     文本对齐     |                             可以设定文字水平对齐方式                              |
+|      text-indent      |     文本缩进     |                         通常用于段落缩进两个字的距离 2em                          |
+|    text-decoration    |     文本修饰     |                              添加下滑线和取消下划线                               |
+|      line-height      |       行高       |             控制行与行之间的距离，其中又上边距，字体大小，下边距组成              |
+|   background-color    |     背景颜色     |                          预定义的颜色值/十六进制/RGB代码                          |
+|   background-image    |     背景图片     |                                   url(图片路径)                                   |
+|   background-repeat   |     是否平铺     |                        repeat/no-repeat/repeat-x/repeat-y                         |
+|  background-position  |     背景位置     |                        length/position 分别是 x 和 y 坐标                         |
+| background-attachment |     背景附着     |                       scroll（背景滚动）/fixed（背景固定）                        |
+|       背景简写        |    书写更简单    |                背景颜色 背景图片地址 背景平铺 背景滚动 背景位置；                 |
+|     背景色半透明      |   背景颜色透明   |                   background: rgba(0,0,0,0.3); 后面必须是4个值                    |
 
 # 元素的显示模式
 
@@ -111,16 +105,12 @@ HTML元素一般分为**块元素**和**行内元素**。
 - 样式冲突，遵循的原则是**就近原则**，哪个样式离结构近，就执行那个样式
 - 样式不冲突，不会层叠
 
-
-
 ## 继承性
 
 CSS中子标签会继承父标签的某些样式，如文本颜色和字号。简单的理解就是：子承父业。
 
 - 恰当的使用继承可以简化代码，降低CSS样式的复杂性
 - 子元素可以继承父元素的样式（text-，font-，line-这些元素开头的可以继承，以及color属性）
-
-
 
 ## 优先级
 
@@ -272,7 +262,7 @@ maigin 的复合写法和 padding 完全一致。
 1. 盒子必须指定了宽度（width）。
 2. 盒子左右的外边距都设置为 auto。
 
-```
+```css
 .header {width: 960px; margin: 0 auto;}
 ```
 
@@ -282,7 +272,7 @@ maigin 的复合写法和 padding 完全一致。
 - margin: auto;
 - margin: 0 auto;
 
-注意：以上方法是让块级元素水平居中，<span style="color:red;">行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可</span>
+注意：以上方法是让块级元素水平居中，行内元素或者行内块元素水平居中给其父元素添加 text-align:center 即可
 
 ### 嵌套块元素垂直外边距的坍塌
 
@@ -294,13 +284,13 @@ maigin 的复合写法和 padding 完全一致。
 2. 可以为父元素定义上内边距。
 3. 可以为父元素添加 overflow: hidden。
 
-还有其他方法，比如<span style="color:red;">浮动、固定，绝对定位的盒子不会有塌陷问题</span>，后期再总结。
+还有其他方法，比如浮动、固定，绝对定位的盒子不会有塌陷问题，后期再总结。
 
 ## 清除内外边距
 
 网页元素中有很多默认的内外边距，不同浏览器的默认也不一致。因此我们在布局前，首先要清楚网页元素的默认内边距。
 
-```
+```css
 * {
 	padding: 0;
 	margin: 0;
@@ -308,8 +298,6 @@ maigin 的复合写法和 padding 完全一致。
 ```
 
 <div style="color:red">注意：行内元素为了照顾兼容性，尽量只设置左右内外边距，不要设置上下内外边距。但是转换为块级和行内块元素就可以了</div>
-
-
 
 ## 圆角边框
 
@@ -319,18 +307,14 @@ CSS3中新增了圆角边框样式，这样我们的盒子就可以设置圆角�
 
 radius 半径（园的半径）原理：园与边框的交集形成圆角效果。
 
-```
+```css
 border-radius: length;
 ```
-
-
 
 - 参数值可以为**数值**或**百分比**的形式
 - 如果是正方形，想要设置一个圆，把数值修改为高度或者宽度的一半即可，或者直接写为50%
 - 如果是个 矩形，设置为高度的一般就可以做出两边半圆。
 - 该属性是一个简写属性，可以跟四个值，分别代表左上角、右上角、右下角、左下角
-
-
 
 ## 盒子阴影
 
@@ -338,7 +322,7 @@ CSS3中新增了盒子阴影模型，我们可以使用 box-shadow 属性为盒�
 
 语法：
 
-```
+```css
 box-shadow: h-shadow v-shadow blur spread color inset
 ```
 
@@ -357,15 +341,13 @@ box-shadow: h-shadow v-shadow blur spread color inset
 
 <p style="color:red;">2. 盒子阴影不占用空间，不会影响其他盒子排列</p>
 
-
-
 ## 文字阴影
 
 在CSS3中，可以使用text-shadow属性将阴影应用于文本。
 
 语法：
 
-```
+```css
 text-shadow: h-shadow b-shadow blur color;
 ```
 
@@ -404,7 +386,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 <span style="color:red;">注意：实际开发中，一个页面基本都包含了这三种布局方式（后面移动端学习新的布局方式）。</span>
 
-# 浮动
+## 浮动
 
 有很多的布局效果，标准流没有办法完成，此时就可以利用浮动完成布局。因为浮动可以改变元素标签默认的排列方式。
 
@@ -555,17 +537,15 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 }
 ```
 
-# 定位
+## 定位
 
-## 为什么需要定位
+### 为什么需要定位
 
 有些元素的位置比较刁钻，使用标准流和浮动很难实现。定位为我们解决了这个困难。
 
 <span style="color:red">定位可以让某一元素自由的在一个盒子中移动位置或者固定屏幕中某个位置，并且压住其他盒子。</span>
 
-
-
-## 定位组成
+### 定位组成
 
 定位：将盒子定在某一个位置，所以定位也是在摆放盒子，按照定位的方式移动盒子。
 
@@ -573,7 +553,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 定位模式用于指定一个元素在文档中的定位方式。边偏移则决定了该元素的最终位置。
 
-## 边偏移
+### 边偏移
 
 边偏移就是定位盒子移动到最终位置。有`top、bottom、left、right`四个属性。
 
@@ -586,7 +566,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 注意：left和right同时存在时并不冲突，不会层叠。当两个属性同时存在时优先选择left。同理top和bottom优先选择top。
 
-## 定位模式
+### 定位模式
 
 定位模式决定元素的定位方式，它通过CSS的 `position` 属性来设置，一共有四个可选值：
 
@@ -597,26 +577,26 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 | absolute | 绝对定位 |
 | fixed    | 固定定位 |
 
-### 静态定位
+#### 静态定位
 
 静态定位是元素的默认定位方式，就是无定位的意思。
 
 语法：
 
-```
+```css
 选择器 { position: static; }
 ```
 
 - 静态定位按照标准流特性摆放位置，它没有边偏移
 - 静态定位在布局中很少使用
 
-### 相对定位（重要）
+#### 相对定位（重要）
 
 相对定位是元素在移动位置的时候，是**相对于它原来的位置来说**的（自恋型）
 
 语法：
 
-```
+```css
 选择器 { position: relative; }
 ```
 
@@ -627,13 +607,13 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 因此，相对定位并没有脱标。它最典型的应用是给绝对定位当爹的。
 
-### 绝对定位 absolute （重要）
+#### 绝对定位（重要）
 
 绝对定位是元素在移动位置的时候，是相对于它祖先元素来说的（拼爹型）。
 
 语法：
 
-```
+```css
 选择器 { position: absolute; }
 ```
 
@@ -643,7 +623,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 2. 如果祖先元素有定位（相对、绝对、固定定位），则以最近一级的有定位的祖先元素为参考点移动位置。
 3. **绝对定位不再占有原来的位置。（脱标）**
 
-#### 子绝父相
+**子绝父相**
 
 子绝父相非常重要，意思是：子级使用绝对定位的话，父级要用相对定位
 
@@ -655,7 +635,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 总结：因为父级需要占有位置，因此是相对定位，子盒子不需要占有位置，则是绝对定位。
 
-#### 绝对定位盒子居中
+**绝对定位盒子居中**
 
 加了绝对定位的盒子不能通过 margin: 0 auto; 水平居中，但是可以通过下面的计算方法实现水平和垂直居中。
 
@@ -676,7 +656,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 }
 ```
 
-### 固定定位
+#### 固定定位
 
 固定定位是元素固定于浏览器可视区的位置。
 
@@ -697,7 +677,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 2. 固定定位不占有原来的位置
    - **固定定位也是脱标的，其实固定定位也可以看作是一种特殊的绝对定位。**
 
-#### 固定定位小技巧 贴近版心右侧
+**固定定位小技巧，贴近版心右侧**
 
 小算法：
 
@@ -706,7 +686,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 就可以让固定定位的盒子贴着版心对齐了。
 
-### 粘性定位
+#### 粘性定位
 
 粘性定位可以被认为是相对定位和固定定位的混合。Sticky粘性的：
 
@@ -739,7 +719,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 - 数字后面不能加单位。
 - 只有定位的盒子才有z-index属性
 
-## 定位的页数属性
+### 定位的页数属性
 
 绝对定位和固定定位也和浮动类似。
 
@@ -747,8 +727,6 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 2. 块级元素添加绝对或者固定定位，如果不给宽度或者高度，默认大小是内容大小。
 3. 脱标的盒子不会发生外边距塌陷
    - 浮动元素、绝对定位（固定定位）元素都不会出发外边距合并的问题。
-
-## 定位的拓展
 
 ### 绝对定位（固定定位）会完全压住盒子
 
@@ -770,7 +748,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 
 为了有效降低服务器接收和发送请求的次数，提高页面加载速度，就出现了CSS的精灵图技术（也成为CSS Sprites、CSS雪碧）。
 
-<span style="color:red">核心原理：将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了</span>
+**核心原理：将网页中的一些小背景图像整合到一张大图中，这样服务器只需要一次请求就可以了**
 
 ### 精灵图的使用
 
@@ -789,8 +767,6 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 - 复合写法：`background: url(../img/img.png) -155px -105px;`
 - 分开写法：通过``background`指定精灵图，通过`background-position`指定位置
 - 指定位置也可以拆分成`background-position-x`和`background-position-y`
-
-
 
 ## 字体图标
 
@@ -841,13 +817,8 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
         }
 ```
 
-<div style="width: 0;
-            height: 0;
-            border-top: 50px solid pink;
-            border-right: 50px solid red;
-            border-bottom: 50px solid blue;
-            border-left: 50px solid green;
-            margin: auto;"></div>
+![](https://pic1.imgdb.cn/item/6339b06116f2c2beb19b60b9.jpg)
+
 
 
 
@@ -888,29 +859,13 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 </body>
 ```
 
-<div style="position: relative;width: 150px;height: 200px;background-color: antiquewhite;margin: auto;">
-    <div style="position: absolute;
-            top: -20px;
-            right: 10px;
-            width: 0;
-            height: 0;
-            border-top: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid antiquewhite;
-            border-left: 10px solid transparent;
-            margin: auto;">
-    </div></div>
-
-
-
-
-
+![](https://pic1.imgdb.cn/item/6339b09016f2c2beb19bc19e.jpg)
 
 ## 鼠标样式 cursor
 
 可以给元素添加`cursor`属性来控制经过其的鼠标样式。
 
-```
+```css
 { cursor: pointer; }
 ```
 
@@ -922,7 +877,7 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 | text        | 文本       |
 | not-allowed | 禁止       |
 
-```
+```html
 <ul>
         <li style="cursor: default;">我是默认的小白鼠标样式</li>
         <li style="cursor: pointer;">我是小手鼠标样式</li>
@@ -932,18 +887,9 @@ CSS 提供了三种传统布局方式 （通俗说来就是盒子如何进行排
 </ul>
 ```
 
-<div><ul>
-        <li style="cursor: default;">我是默认的小白鼠标样式</li>
-        <li style="cursor: pointer;">我是小手鼠标样式</li>
-        <li style="cursor: move;">我是鼠标移动鼠标样式</li>
-        <li style="cursor: text;">我是鼠标文本样式</li>
-        <li style="cursor: not-allowed;">我是鼠标禁止样式</li>
-</ul></div>
+## input 表单的轮廓线 outline
 
-
-## 表单的轮廓线 outline
-
-给表单添加 `outline: 0;`或者`outline: none;`样式之后就可以去掉默认的蓝色边框。
+给表单添加 `outline: 0;`或者`outline: none;`样式之后就可以去掉选中时的默认高亮边框。
 
 ```css
 input {
@@ -951,38 +897,18 @@ input {
         }
 ```
 
-未去除轮廓
-
-<div><input type="text"></div>
-
-去除轮廓
-
-<div><input type="text" style="outline:none;"></div>
-
 ## 文本域拖动缩放 resize
 
-```
+可以通过 reseze 来去除文本域的右下角拖放大小选项。
+
+```css
 textarea {
             resize: none;
             outline: none;
         }
 ```
 
-未去除
-
-<textarea name="" id="" cols="30" rows="10"></textarea>
-
-去除后
-
-<textarea name="" id="" cols="30" rows="10" style="outline:none;resize:none;"></textarea>
-
-注意：文本域如果`<textarea></textarea>`不再同一行，那么显示出的文本框中会有自动的类似padding效果挤开里面的文字
-
-<div>
-    <textarea name="" id="" cols="30" rows="10" style="outline:none;resize:none;">
-    </textarea>
-</div>
-
+注意：文本域如果在书写代码`<textarea></textarea>`时不再同一行，那么显示出的文本框中会有自动的类似 padding 效果挤开里面的文字。
 
 ## 图片文字居中对齐
 
@@ -1005,21 +931,7 @@ vertical-align: baseline | top | middle | bottom
 | middle   | 把元素放置在父元素的中部             |
 | bottom   | 把元素的底端与行中最低元素的底端对齐 |
 
-<div>
-    <textarea cols="30" rows="5"></textarea>默认基线对齐
-</div>
-<div>
-    <textarea cols="30" rows="5" style="vertical-align:top;"></textarea>顶端对齐
-</div>
-<div>
-    <textarea cols="30" rows="5" style="vertical-align:bottom;"></textarea>底端
-</div>
-<div>
-    <textarea cols="30" rows="5" style="vertical-align:middle;"></textarea>垂直对齐
-</div>
-
-
-
+![](https://pic1.imgdb.cn/item/6339b28116f2c2beb19f7524.jpg)
 
 ### 图片底测空白缝隙
 
@@ -1027,8 +939,8 @@ vertical-align: baseline | top | middle | bottom
 
 解决：
 
-1. 给行内块元素加上 <span style="color:red">vertical-align</span>即可
-2. 将行内块（图片）转换为块级元素<span style="color:red">display: block;</span> 
+1. 给行内块元素加上 **vertical-align **即可
+2. 将行内块（图片）转换为块级元素 **display: block;**
 
 ## 溢出文字省略号显示
 
@@ -1042,7 +954,7 @@ vertical-align: baseline | top | middle | bottom
 
 最后使用 `text-overflow: ellipsis;` 对溢出部分的文字进行省略。
 
-```
+```css
 {
 /* 1. 强制文本在一行内显示 */
 /* 默认未normal自动换行 */
@@ -1054,9 +966,8 @@ text-overflow: ellipsis;
 }
 ```
 
-<div style="width:100px;height:40px;background-color:pink;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">
-    我们文字的显示有时候会由于盒子不够宽而显示不开，出现换行的情况。
-</div>
+![xlGh9I.png](https://s1.ax1x.com/2022/10/04/xlGh9I.png)
+
 ### 多行文本
 
 多行文本溢出显示省略号，有非常大的兼容性问题，适合webKit浏览器或移动端（移动端大多是webKit内核）
@@ -1074,13 +985,10 @@ text-overflow: ellipsis;
 }
 ```
 
-<div style="display: -webkit-box;width:100px;height:50px;background-color:pink;overflow:hidden;text-overflow:ellipsis;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">
-    我们文字的显示有时候会由于盒子不够宽而显示不开，出现换行的情况。
-</div>
+![xlGxg0.png](https://s1.ax1x.com/2022/10/04/xlGxg0.png)
+
 
 这种方法只会省略指定的行，所以指定行下面的照常显示，因此需要配合盒子高度来进行设置。
-
-
 
 ## margin 负值技巧
 
@@ -1127,12 +1035,8 @@ text-overflow: ellipsis;
 
 因为给了浮动，`li`首先会向左对齐，对齐后才会向左移动-1px。
 
-<div style="height: 100px;">
-    <ul>
-            <li style="float: left;width: 199px;height: 100px;border: 1px solid #000;margin-left: -1px;list-style: none;"></li>
-            <li style="float: left;width: 199px;height: 100px;border: 1px solid #000;margin-left: -1px;list-style: none;"></li>
-        </ul>
-</div>
+![xlJ9DU.png](https://s1.ax1x.com/2022/10/04/xlJ9DU.png)
+
 ### 边框选中高亮
 
 由于我们的这个盒子是左右边框相互覆盖，来解决重合的问题。
@@ -1141,7 +1045,7 @@ text-overflow: ellipsis;
 
 这时我们给高亮的盒子增加一个相对定位，并根据境况给一个z-index值便可以使得选中的盒子覆盖在最上面。
 
-<span style="color:red">注意：相对定位显示在浮动之上</span>
+**注意：相对定位显示在浮动之上**
 
 ## 文字围绕浮动元素
 
@@ -1241,15 +1145,15 @@ body {
 
 ### Unicode编码字体：
 
-把中文字体名称用相应的Unicode编码来代替，这样就可以有效的避免浏览器解析CSS代码时候出现乱码的问题。
+把中文字体名称用相应的 Unicode 编码来代替，这样就可以有效的避免浏览器解析 CSS 代码时候出现乱码的问题。
 
 比如：
 
-黑体  \9ED1\4F53
+黑体 ` \9ED1\4F53`
 
-宋体 \5B8B\4F53
+宋体 `\5B8B\4F53`
 
-微软雅黑 \5FAE\8F6F\96C5\9ED1
+微软雅黑 `\5FAE\8F6F\96C5\9ED1`
 
 # CSS3新特性
 
@@ -1257,9 +1161,9 @@ body {
 
 ### 属性选择器
 
-属性选择器可以根据元素特定的属性来选择元素。这样就可以不借助于类或者id选择器。
+属性选择器可以根据元素特定的属性来选择元素。这样就可以不借助于类或者 id 选择器。
 
-1. 利用属性选择器可以不用借助类和id选择器。
+- 利用属性选择器可以不用借助类和 id 选择器。
 
 ```css
 input[value] {
@@ -1269,7 +1173,7 @@ input[value] {
 
 以上选择器只选择具有 value 属性的 input。
 
-1. 属性选择器还可以选择 属性=值 的某些元素
+- 属性选择器还可以选择 属性 = 值 的某些元素
 
 ```css
 input[type=text] {
@@ -1277,7 +1181,7 @@ input[type=text] {
 }
 ```
 
-1. 属性选择器可以选择属性值开头的某些元素
+- 属性选择器可以选择属性值开头的某些元素
 
 ```css
 div[class^=icon] {
@@ -1290,7 +1194,7 @@ div[class^=icon] {
 <div class="icon4">小图标4</div>
 ```
 
-1. 属性选择器可以选择属性值结尾的某些元素
+- 属性选择器可以选择属性值结尾的某些元素
 
 ```css
 div[class$=data]{
@@ -1302,7 +1206,7 @@ div[class$=data]{
 <div class="icon3-ico">小图标3</div>
 ```
 
-1. 属性选择器可以选择属性值存在某些值的元素
+- 属性选择器可以选择属性值存在某些值的元素
 
 ```css
 div[class*=con]{
@@ -1376,7 +1280,7 @@ E:nth-of-type 仅仅给要选择的孩子E标号
 
 ### 伪元素选择器（重点）
 
-为元素选择器可以利用CSS创建新标签元素，而不需要HTML标签，从而简化HTML结构。
+为元素选择器可以利用CSS创建新标签元素，而不需要 HTML 标签，从而简化 HTML 结构。
 
 | 选择符   | 简介                     |
 | -------- | ------------------------ |
@@ -1390,7 +1294,7 @@ E:nth-of-type 仅仅给要选择的孩子E标号
 - 语法：element::before{}
 - before 和 after 必须有 content 属性
 - before 在父元素内容的前面创建元素，after 在父元素内容的后面插入元素
-- 伪元素选择器和标签选择器一样，权重为1
+- 伪元素选择器和标签选择器一样，权重为 1
 
 #### 伪元素清除浮动
 
@@ -1437,7 +1341,7 @@ filter: 函数（）; 例如：filter:blur(5px); blur模糊处理数值越大越
 
 可以使用 calc 函数在声明属性值时执行一些计算。
 
-```text
+```css
 width: calc(100%-80px);
 ```
 
@@ -1453,7 +1357,7 @@ width: calc(100%-80px);
 
 我们现在经常和 :hover 一起搭配使用
 
-```text
+```css
 transition: 要过渡的属性 花费时间 运动曲线 何时开始：
 ```
 
@@ -1582,11 +1486,11 @@ demo：
 
 ## 旋转rotate
 
-2D旋转指的是让元素在2维平面内顺势站或者逆时针旋转。
+2D 旋转指的是让元素在2维平面内顺势站或者逆时针旋转。
 
 语法：
 
-```HTML
+```css
 transform: rotate(度数);
 ```
 
@@ -1616,7 +1520,7 @@ demo：
 
 我们可以设置元素转换的中心点。
 
-```HTML
+```css
 transform-origin: x y;
 ```
 
@@ -1694,7 +1598,7 @@ transform-origin: x y;
 
 语法：
 
-```HTML
+```css
 transform: scale(x, y);
 ```
 
@@ -1734,7 +1638,7 @@ demo：
 
 我们可以将2D转换的变换进行综合。
 
-```HTML
+```css
 transform: translate() rotate() scale ...;
 ```
 
@@ -1854,19 +1758,19 @@ div {
 
 ## 动画常用属性
 
-|                           |                                                              |
-| ------------------------- | ------------------------------------------------------------ |
-| 属性                      | 描述                                                         |
-| @keyframes                | 定义动画                                                     |
-| animation                 | 所有动画属性的简写属性，除了animation-play-state属性。       |
-| animation-name            | 规定@keyframes动画的名称。（必须的）                         |
-| animation-duration        | 规定动画完成一个周期所花费的秒或毫秒，默认是0。（必须的）    |
-| animation-timing-function | 规定动画的速度曲线，默认是ease。                             |
-| animation-delay           | 规定动画何时开始，默认是0。                                  |
-| animation-iteration-count | 规定动画被播放的次数，默认是1，还有infinite。                |
+|                           |                                                               |
+| ------------------------- | ------------------------------------------------------------- |
+| 属性                      | 描述                                                          |
+| @keyframes                | 定义动画                                                      |
+| animation                 | 所有动画属性的简写属性，除了animation-play-state属性。        |
+| animation-name            | 规定@keyframes动画的名称。（必须的）                          |
+| animation-duration        | 规定动画完成一个周期所花费的秒或毫秒，默认是0。（必须的）     |
+| animation-timing-function | 规定动画的速度曲线，默认是ease。                              |
+| animation-delay           | 规定动画何时开始，默认是0。                                   |
+| animation-iteration-count | 规定动画被播放的次数，默认是1，还有infinite。                 |
 | animation-direction       | 规定动画是否在下一周期逆向播放，默认是normal，alternate逆播放 |
-| animation-play-state      | 规定动画是否在运行或暂停。默认是running，还有pause。         |
-| animation-fill-mode       | 规定动画结束后保持状态，保持forwards回到起始backwards。      |
+| animation-play-state      | 规定动画是否在运行或暂停。默认是running，还有pause。          |
+| animation-fill-mode       | 规定动画结束后保持状态，保持forwards回到起始backwards。       |
 
 - 伴随opicity 使用来调整元素透明度。
 
@@ -2425,312 +2329,255 @@ flex-flow: row wrap;
 
 `order`属性定义项目的排列顺序。**数值越小，排列越靠前**，默认值为0。
 
-注意：和z-index不同。
+注意：和 z-index 不同。
 
-# 居中对齐总结
+# rem布局
 
-# 行内元素水平居中
+## 概念
 
-## text-align: center;
+rem布局就是通过媒体查询来检测终端设备的宽度，来设置主流宽度的布局，如320px布局和750px布局。
 
+确定布局宽度后，将宽度平分为固定等份，如15等份。以此来设置html的文字大小，文字大小 = 布局宽度 / 设定的等份。如在750px宽度布局下，固定平分15等份，那么就需要设置html的宽度 = 750px / 15 = 50px
+
+设定完html的字体大小后，之后对大小的设置就不用px了，将采用rem。
+
+**rem的基准就是相对于html元素的字体大小。上述例子中 1rem = 50px**
+
+## 媒体查询
+我们可以通过媒体查询的方法来动态设置布局宽度，从而动态的修改html的文字大小。
+
+语法
+```css
+@media mediatype and|not|only (media feature) {
+    CSS-Code;
+}
+```
+
+| 值     | 解释说明                           |
+| ------ | ---------------------------------- |
+| all    | 用于所有设备                       |
+| print  | 用于打印机和打印预览               |
+| screen | 用于电脑屏幕，平板电脑，智能手机等 |
+
+示例
+```css
+/* 在我们屏幕上 并且 最大的宽度时 800像素 设置我们想要的样式 */
+@media screen and (max-width: 800px) {
+    body {
+        background-color: pink;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        background-color: aliceblue;
+    }
+}
+
+```
+- `max-width: 800px`：小于等于800px时采用。
+- `min-width: 1000px`：大于等于1000px时采用。
+
+## 元素动态变化
 ```html
 <style>
-    .parent {
-        background-color: aliceblue;
-		text-align: center;
+  @media screen and (min-width: 320px) {
+    html {
+      font-size: 50px;
     }
-    .child {
-		background-color: orange;
+  }
+
+  @media screen and (min-width: 640px) {
+    html {
+      font-size: 100px;
     }
+  }
+
+  .box {
+    font-size: .5rem;
+    text-align: center;
+    background-color: pink;
+    color: #fff;
+  }
 </style>
+
 <body>
-    <div class="parent">
-        <span class="child">content</span>
-    </div>
+  <div class="box">rem布局</div>
 </body>
 ```
 
-<div class="parent" style="background-color: aliceblue;text-align: center;">
-        <span class="child" style="background-color: orange;">content</span>
-</div>
-## fit-content
-
+## 媒体查询引入资源
+通过媒体查询监测终端宽度，以此来引入不同宽度的css样式。
 ```html
-<style>
-    .parent {
-        background-color: aliceblue;
-        width: fit-content;
-        margin: auto;
-    }
-    .child {
-		background-color: orange;       
-    }
-</style>
-<body>
-    <div class="parent">
-        <span class="child">content</span>
-    </div>
-</body>
+<link rel="stylesheet" href="style320px.css" media="screen and (min-width: 320px)">
+<link rel="stylesheet" href="style640px.css" media="screen and (min-width: 640px)">
 ```
 
-<div class="parent" style="background-color: aliceblue;width: fit-content;margin: auto;">
-        <span class="child" style="background-color: orange;">content</span>
-</div>
-# 行内元素和行内块元素垂直居中
+## rem适配方案
 
-```html
-<style>
-    .parent {
-        height: 200px;
-        line-height: 200px;
-        background-color: aliceblue;
+方案一： 让一些不能等比自适应的元素，达到当前设备尺寸发生改变的时候，等比例适配当前设备。
+方案二： 使用媒体查询根据不同设备按比例设置html的字体大小，然后页面元素使用rem做尺寸单位，当html字体大小发生变化元素尺寸也会发生变化，从而达到等比例缩放的适配。
+
+**实际开发适配方案**
+1. 按照设计稿与设备宽度的比例，动态计算并设置html根标签的font-size大小；（媒体查询）
+2. CSS中，设计稿元素的宽、高、相对位置的取值，按照同等比例换算为rem为单位的值。
+
+实现技术1：
+- less
+- 媒体查询
+- rem
+
+实现技术2：
+- flexible.js（淘宝）
+- rem
+
+总结：
+1. 两种技术方案都存在。
+2. 方案2更简单。
+
+### 实现技术1
+rem + 媒体查询 + less技术
+
+对于大部分主流移动设备，我们只采取一套或两套作为标准。对于极端屏幕采取特殊适配的方法。
+
+目前主流采取750px进行适配。
+
+**动态设置html标签font-size大小**
+1. 假设设计稿750px
+2. 将屏幕划分为15等份
+3. 每一份作为html字体的大小，这里为50px
+4. 那么在320px设备的时候，字体大小为320/15 = 21.33px
+5. 用我们的页面元素的大小除以不同的html字体大小会发现它们的比例还是相同的
+6. 比如我们一750为标准的设计稿
+7. 一个100*100像素的页面元素在750屏幕下，就是100/50 = 2rem, 因此设置为2rem * 2rem，比例依旧是1：1
+8. 320屏幕下，html字体大小为21.33，2rem = 42.66 此时宽高都是42.66px，但是比例依旧时1：1
+9. 这样就实现了不同屏幕下页面元素盒子等比例缩放的效果。
+
+**公共common.lees**
+针对常见屏幕尺寸利用媒体查询设置html字体大小。
+
+```less
+// 设置常见的屏幕尺寸 修改里面的html文字大小
+a {
+    text-decoration: none;
+}
+// 一定要写到最上面
+html {
+    font-size: 50px;
+}
+// 我们此次定义的划分的份数 为 15
+@no: 15;
+// 320
+@media screen and (min-width: 320px) {
+    html {
+        font-size: 320px / @no;
     }
-    .child {
-		background-color: orange;
+}
+// 360
+@media screen and (min-width: 360px) {
+    html {
+        font-size: 360px / @no;
     }
-</style>
-<body>
-    <div class="parent">
-        <span class="child">content</span>
-    </div>
-</body>
+}
+// 375 iphone 678
+@media screen and (min-width: 375px) {
+    html {
+        font-size: 375px / @no;
+    }
+}
+
+// 384
+@media screen and (min-width: 384px) {
+    html {
+        font-size: 384px / @no;
+    }
+}
+
+// 400
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 400px / @no;
+    }
+}
+// 414
+@media screen and (min-width: 414px) {
+    html {
+        font-size: 414px / @no;
+    }
+}
+// 424
+@media screen and (min-width: 424px) {
+    html {
+        font-size: 424px / @no;
+    }
+}
+
+// 480
+@media screen and (min-width: 480px) {
+    html {
+        font-size: 480px / @no;
+    }
+}
+
+// 540
+@media screen and (min-width: 540px) {
+    html {
+        font-size: 540px / @no;
+    }
+}
+// 720
+@media screen and (min-width: 720px) {
+    html {
+        font-size: 720px / @no;
+    }
+}
+
+// 750
+@media screen and (min-width: 750px) {
+    html {
+        font-size: 750px / @no;
+    }
+}
 ```
 
-<div class="parent" style="background-color: aliceblue;height: 100px;line-height: 100px;">
-        <span class="child" style="background-color: orange;">content</span>
-</div>
-# 块级元素水平居中
+# less
+[less中文教程 https://less.bootcss.com](https://less.bootcss.com)
 
-```html
-<style>
-    .parent {
-        height: 200px;
-        width: 200px;
-        background-color: aliceblue;
-    }
-    .child {
-        height: 100px;
-        width: 200px;
-        
-		background-color: orange;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
+## 编译
+
+less 的代码格式为 `.less`，不能直接被html读取，需要转化为 `.css` 才可以被读取，这就需要我们对 `.less` 进行编译了。
+
+在vscode中我们可以下载 easy less 插件来进行编译，当保存时会自动编译成.css文件。
+
+## 变量
+
+less 文件
+```less
+@width: 10px;
+@height: @width + 10px;
+
+#header {
+  width: @width;
+  height: @height;
+}
+```
+编译成 css
+```css
+#header {
+  width: 10px;
+  height: 20px;
+}
 ```
 
-<div class="parent" style="background-color:aliceblue;">
-        <div class="child" style="height: 50px;width: 100px;background-color: orange;margin: auto;">content</div>
-</div>
-# 块级元素水平垂直居中
-
-## 定位方法
-
-### 方法一：必须知道宽高
-
-```html
-<style>
-    .parent {
-        position: relative;
-        height: 100px;
-        background-color: aliceblue;
-    }
-    .child {
-        width: 100px;
-        height: 50px;
-        position: absolute;
-		background-color: orange;
-        left: 50%;
-        top: 50%;
-        margin-top: -25px;
-        margin-left: -50px;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
+## 嵌套
+```less
+#header {
+  color: black;
+  .navigation {
+    font-size: 12px;
+  }
+  .logo {
+    width: 300px;
+  }
+}
 ```
-
-<div class="parent" style="position: relative;height: 100px;background-color: aliceblue;">
-        <div class="child" style="width: 100px;height: 50px;position: absolute;background-color: orange;top: 50%;left: 50%;margin-top: -25px;margin-left: -50px;">content</div>
-    </div>
-### 方法二：不必知道宽高
-
-```html
-<style>
-    .parent {
-        position: relative;
-        height: 100px;
-        background-color: aliceblue;
-    }
-    .child {
-        position: absolute;
-		background-color: orange;
-        left: 50%;
-        top: 50%;
-		transform: translate(-50%, -50%);
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-<div class="parent" style="position: relative;height: 100px;background-color: aliceblue;">
-        <div class="child" style="position: absolute;background-color: orange;top: 50%;left: 50%;transform: translate(-50%, -50%);">content</div>
-    </div>
-### 方法三：margin配合定位
-
-当我们给子元素绝对定位后，当我们给各边界距离都为0后，子元素就会填充父元素的所有可用空间，这样一来，在水平和垂直方向上就有了可以分配的空间，这时设置`margin: auto;`就可以自动居中。
-
-```html
-<style>
-    .parent {
-        position: relative;
-        height: 100px;
-        background-color: aliceblue;
-    }
-    .child {
-        position: absolute;
-		background-color: orange;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-		margin: auto;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-<div class="parent" style="position: relative;height: 100px;background-color: aliceblue;">
-        <div class="child" style="width:100px;height:50px;position: absolute;background-color: orange;top: 0;left: 0;right: 0;bottom: 0;margin: auto;overflow: hidden;">content</div>
-    </div>
-### padding 方法
-
-#### 方法一：给父元素加 padding
-
-```html
-<style>
-    .parent {
-        background-color: aliceblue;
-        padding: 20px;
-    }
-    .child {
-        height: 100px;
-		background-color: orange;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-<div class="parent" style="background-color: aliceblue;padding: 40px;">
-        <div class="child" style="height: 100px;background-color: orange;">content</div>
-    </div>
-#### 方法二：给子元素加 padding
-
-```html
-<style>
-    .parent {
-        background-color: aliceblue;
-        width: 200px;
-        height: 100px;
-    }
-    .child {
-        width: 100px;
-        height: 50px;
-		background-color: orange;
-        padding: 25px 50px;
-        background-clip: content-box;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-### flex 布局方法
-
-`justify-content: center;`控制水平居中
-
-`align-items: center;`控制垂直居中
-
-```html
-<style>
-    .parent {
-        height: 200px;
-        background-color: aliceblue;
-		display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .child {
-        height: 50px;
-        width: 100px;
-		background-color: orange;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-<div class="parent" style="background-color: aliceblue;height: 100px;display: flex;align-items: center;justify-content: center;">
-        <div class="child" style="background-color: orange;height: 50px;width: 100px">content</div>
-    </div>
-### 伪元素方法
-
-```html
-<style>
-    .parent {
-        height: 100px;
-        text-align: center;
-        background-color: aliceblue;
-    }
-    .child {
-        height: 50px;
-        width: 100px;
-        display: inline-block;
-		background-color: orange;
-        vertical-align: center;
-    }
-    .parent::before {
-        content: "";
-        height: 100px;
-        display: inline-block;
-        vertical-align: middle;
-        background-color: yellow;
-    }
-</style>
-<body>
-    <div class="parent">
-        <div class="child">content</div>
-    </div>
-</body>
-```
-
-<div class="parent" style="background-color: aliceblue;height: 100px;text-align:center;">
-    	<div class="before" style="width:5px;height: 100px;display: inline-block; vertical-align: middle;background-color: yellow;"></div>
-        <div class="child" style="background-color: orange;height: 50px;width: 100px;display: inline-block;vertical-align: middle;">content</div>
-    </div>
-为了方便观察，这里效果中给模拟的伪元素增加了5px的宽度，实际不用给伪元素设置宽度。
-
