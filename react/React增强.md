@@ -206,3 +206,353 @@ Fragment 和 空标签的区别：
 - 两个标签都不会被渲染到页面上。
 - 当使用遍历渲染时，Fragment 可以携带 key 属性。也可以携带其他属性，但是由于不会被渲染到页面，除了遍历的使用场景和空标签没区别。
 - 空标签不能携带属性，遍历时无法携带 key 属性。
+
+### 组件渲染优化
+
+#### 对于类式组件
+
+到目前位置我们使用的组件有两个弊端：
+
+1. 当我们使用 `this.setState({})` 时，只调用但不修改数据，当前页面的 render 也会触发，影响效率。
+2. 当我们父组件的 render 触发时，即使子组件是一个静态组件，子组件的 render 也会触发，尽管子组件并没有从父组件接收改变的数据，这种情况的子组件不需要 render。
+
+我们可以采用生命周期钩子 `shouldComponentUpdate(newProps, newState)` 来解决这两个问题：
+
+- 这个钩子会在 render 之前调用，如果返回值为 true 则会继续向下进行 render，如果返回为 false 则流程到此为止，不会 render。
+- 在这个函数中，参数为新的 props 和 state，而 this.props 和 this.state 是旧的，因为此时组件还没有发生更新。
+- 我们就可以通过新旧 props 和 state 是否相等，来控制是否进行 render，从而就解决了以上两个弊端。
+
+当然我们并不需要每个组件去进行手写，React 为我们提供了 PureComponent，我们继承时只需要继承这个就行了。
+
+```jsx
+import React, { PureComponent } from 'react'
+
+export default class Father extends PureComponent {
+  state = {
+    count: 0,
+  }
+  render() {
+    console.log('father---render')
+    return (
+      <div>
+        <button
+          onClick={() => {
+            this.setState({ })
+          }}>
+          更新空值
+        </button>
+      </div>
+    )
+  }
+}
+```
+
+#### 对于函数式组件
+
+对于函数式组件，也存在于类式组件相同的问题。
+
+1. 当我们父组件进行 render 渲染时，不管其子组件是否依赖父组件的数据而进行呈现，子组件都会也执行 render。
+
+上面这个问题我们可以使用 `React.memo()` 来解决。
+
+1. 向 memo 处理后的函数式组件中传入没有改变的 props 时，子组件并不会进行 render 渲染。
+2. 但是这时如果我们的 props 传入一个函数，不管函数是否改变，子组件都会进行 render 渲染。
+
+为了解决传入 props 函数后，子组件依然会跟着 render 的问题，我们采用 useMemo() 或 useCallback() 来解决。
+
+```jsx
+import React from 'react'
+
+export default function Count() {
+  console.log('father render')
+
+  React.useEffect(() => {
+    console.log('father update')
+  })
+    
+  const [count, setCount] = React.useState(0)
+  
+  const fn = React.useMemo(() => {
+    return () => {
+      console.log('test usememo')
+    }
+  }, [])
+  
+  return (
+    <div>
+      <h2>count: {count}</h2>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <hr />
+      <Child count={fn} />
+    </div>
+  )
+}
+
+function Child(props) {
+  console.log('child---render')
+
+  React.useEffect(() => {
+    console.log('child---update')
+  })
+  return (
+    <div>
+      <h3>Child</h3>
+      <button onClick={props.count}>btn</button>
+    </div>
+  )
+}
+
+Child = React.memo(Child)
+```
+
+其中 useMemo 和 useCallback 功能类似。
+
+```jsx
+const fn = React.useMemo(() => {
+  return () => {
+    console.log('test usememo')
+  }
+}, [])
+
+const fn2 = React.useCallback(() => {
+  console.log('test useCallback')
+}, [])
+```
+
+上面的两个 fn 和 fn2 是等价的，所以 useCallback 就是专门封装了 useMemo 返回值为函数的情况。
+
+后面的空数组表示什么都不监听（类似于 useEffect），也就是说 fn 一直都不会变化。这样以 props 的形式传入，就不会引起 memo 处理的子组件触发 render 了。
+
+### 错误边界
+
+有时我们的子组件 render 时会发生一些错误，这时整个页面就无法运行了。我们希望当某个组件出现问题时，不影响整个页面的展示。这时我们就需要用到错误边界技术。
+
+两个用到的核心生命周期钩子:
+
+`static getDeivedStateFromError(error)`：
+
+- 当组件的子组件发生错误时触发。
+
+- 返回一个新的 state。
+
+- 所以我们需要定义一个 state 用于标识其子组件是否发生错误。通过这个标识我们来判断是否渲染这个组件。这样错误组件就不会被渲染到页面，也就不会影响整个页面因为这个错误而无法显示了。
+
+`componentDidCatch(error, info)`：
+
+- 组件发生错误时调用，一般用于统计错误信息，发送给后台。
+
+```jsx
+import React, { Component } from 'react'
+
+export default class index extends Component {
+  state = {
+    hasError: '',
+  }
+
+  static getDerivedStateFromError(error) {
+    console.log('@@@', error)
+    return { hasError: true }
+  }
+
+  componentDidCatch(error, info) {
+    console.log(error, info)
+  }
+  
+  render() {
+    return (
+      <div>
+        <h1>father</h1>
+        {this.state.hasError ? <h1>当前网络不稳定</h1> : <Child />}
+      </div>
+    )
+  }
+}
+
+class Child extends Component {
+  render() {
+    return <h2>{child}</h2>
+  }
+}
+```
+
+### render props 插槽
+
+render props 技术就是 vue 中的插槽技术。向组件内部动态传入。
+
+#### children props
+
+```jsx
+import React, { Component } from 'react'
+
+export default class index extends Component {
+  render() {
+    return (
+      <div>
+        <h1>father</h1>
+        <A>
+          <p>children props</p>
+        </A>
+      </div>
+    )
+  }
+}
+
+class A extends Component {
+  render() {
+    return (
+      <>
+        <h2>A</h2>
+        {this.props.children}
+      </>
+    )
+  }
+}
+```
+
+**render props**
+
+```jsx
+import React, { Component } from 'react'
+
+export default class index extends Component {
+  render() {
+    return (
+      <div>
+        <h1>father</h1>
+        <A render={data => <p>render props: {data}</p>} />
+      </div>
+    )
+  }
+}
+
+class A extends Component {
+  state = {
+    data: 'test',
+  }
+  render() {
+    return (
+      <>
+        <h2>A</h2>
+        {this.props.render(this.state.data)}
+      </>
+    )
+  }
+}
+```
+
+### context 传值
+
+context 是一种组件间通信的方式，可以用来进行隔代组件传值。
+
+首先要创建使用 React.createContext 创建一个 context 对象，要保证这个对象可以被使用者读取到。
+
+然后使用 context 的 Provider 来存入值，并向后代提供数据。
+
+```jsx
+import React, { Component, useContext } from 'react'
+
+// createContext 中可以传入一个默认值，当其 Provider 没有被使用时，其他组件读取时就是默认值。
+export const msgContext = React.createContext('默认值')
+// 设置在Devtool中显示的名字
+msgContext.displayName = 'msgContext'
+
+export default class father extends Component {
+  state = {
+    msg: '一条来自父组件的消息',
+  }
+  render() {
+    return (
+      <div>
+        <h1>father</h1>
+        <msgContext.Provider value={this.state.msg}>
+          <Child />
+        </msgContext.Provider>
+      </div>
+    )
+  }
+}
+```
+
+在类式组件中接收父辈的 context 使用 `static contextType = msgContext`。
+
+读取 context 中的值使用 `this.context`
+
+```jsx
+import React, { Component, useContext } from 'react'
+import {msgContext} from './father.jsx'
+
+export default class Child extends Component {
+  static contextType = msgContext
+  render() {
+    return (
+      <>
+        <h2>Child: {this.context}</h2>
+        <Grand />
+      </>
+    )
+  }
+}
+```
+
+在函数式组件中读取 context 有两个方法。
+
+第一种是使用 context 对象中的 Consumer 来完成。
+
+```jsx
+import React from 'react'
+import {msgContext} from './father.jsx'
+
+export default function Grand() {
+  return (
+    <>
+      <msgContext.Consumer>
+        {value => {
+          return <h1>Grand: {value}</h1>
+        }}
+      </msgContext.Consumer>
+    </>
+  )
+}
+```
+
+第二种是使用钩子 useContext 来读取。
+
+```jsx
+import React from 'react'
+import {msgContext} from './father.jsx'
+
+function Grand() {
+  const value = React.useContext(msgContext)
+  return (
+    <>
+      <h2>Grand: {value}</h2>
+    </>
+  )
+}
+```
+
+### useMemo
+
+useMemo 就是 Vue 中的计算属性。
+
+```jsx
+import React from 'react'
+
+export default function index() {
+  const [count, setCount] = React.useState(0)
+  const computed = React.useMemo(() => `count 值加2 为${count + 2}`, [count])
+  return (
+    <div>
+      <h1>count: {count}</h1>
+      <button
+        onClick={() => {
+          setCount(count + 1)
+        }}>
+        +1
+      </button>
+      <h2>computed: {computed}</h2>
+    </div>
+  )
+}
+```
+
